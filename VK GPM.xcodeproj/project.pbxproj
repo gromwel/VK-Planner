@@ -1,0 +1,902 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7DBFD145A887FBF17842AB35 /* libPods-VK GPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 459667A24BF4B739702F4DA2 /* libPods-VK GPM.a */; };
+		9166A211696E71B7A0D0968D /* libPods-VK GPMTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E3F67B6B21D17F71D4553E /* libPods-VK GPMTests.a */; };
+		C0253AE12023B43C007D6B9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253AE02023B43C007D6B9E /* AppDelegate.m */; };
+		C0253AE42023B43C007D6B9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253AE32023B43C007D6B9E /* ViewController.m */; };
+		C0253AE72023B43C007D6B9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0253AE52023B43C007D6B9E /* Main.storyboard */; };
+		C0253AEA2023B43C007D6B9E /* VK_GPM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0253AE82023B43C007D6B9E /* VK_GPM.xcdatamodeld */; };
+		C0253AEF2023B43C007D6B9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0253AED2023B43C007D6B9E /* LaunchScreen.storyboard */; };
+		C0253AF22023B43C007D6B9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253AF12023B43C007D6B9E /* main.m */; };
+		C0253AFC2023B43C007D6B9E /* VK_GPMTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253AFB2023B43C007D6B9E /* VK_GPMTests.m */; };
+		C0253B072023B43C007D6B9E /* VK_GPMUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253B062023B43C007D6B9E /* VK_GPMUITests.m */; };
+		C02931752039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C02931742039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m */; };
+		C029317B203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */; };
+		C0293181203A1F330035CCD0 /* UIView+UITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */; };
+		C0293183203E2AC10035CCD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0293182203E2AC00035CCD0 /* Assets.xcassets */; };
+		C050AE2B2024C6C700491CBA /* VKRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE2A2024C6C700491CBA /* VKRequestManager.m */; };
+		C050AE2E2024D01800491CBA /* VKLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE2D2024D01800491CBA /* VKLogInViewController.m */; };
+		C050AE312025D48D00491CBA /* VKAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE302025D48D00491CBA /* VKAccessToken.m */; };
+		C050AE3620260E7C00491CBA /* VKModels.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE3520260E7C00491CBA /* VKModels.m */; };
+		C050AE3920260EBE00491CBA /* VKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE3820260EBE00491CBA /* VKUser.m */; };
+		C0553DDF202E4A41004CA396 /* VKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C0553DDE202E4A41004CA396 /* VKGroup.m */; };
+		C077D7CC20308DFE001DCF6E /* VKHelpFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */; };
+		C077D7CF2030C21B001DCF6E /* VKGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */; };
+		C077D7D22030DF8A001DCF6E /* VKGroupWallTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */; };
+		C0B7E9732028E3CB0050F816 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7E9722028E3CB0050F816 /* CoreDataManager.m */; };
+		C0B7E979202A43C40050F816 /* VKStartAutorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7E978202A43C40050F816 /* VKStartAutorizationViewController.m */; };
+		C0B7E9C0202E34990050F816 /* VKUserGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7E9BF202E34990050F816 /* VKUserGroupsTableViewController.m */; };
+		C0CBBFD92030F758008A67B4 /* VKGroupPost.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CBBFD82030F758008A67B4 /* VKGroupPost.m */; };
+		C0CBBFDC20336DF6008A67B4 /* VKNewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0CBBFDB20336DF6008A67B4 /* VKNewPostViewController.m */; };
+		D031DE7230F0A1414413E791 /* libPods-VK GPMUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2523B37374289874DCBD11A /* libPods-VK GPMUITests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0253AF82023B43C007D6B9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0253AD42023B43C007D6B9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0253ADB2023B43C007D6B9E;
+			remoteInfo = "VK GPM";
+		};
+		C0253B032023B43C007D6B9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0253AD42023B43C007D6B9E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0253ADB2023B43C007D6B9E;
+			remoteInfo = "VK GPM";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3094980A357EE4196776FFFE /* Pods-VK GPMTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPMTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPMTests/Pods-VK GPMTests.debug.xcconfig"; sourceTree = "<group>"; };
+		459667A24BF4B739702F4DA2 /* libPods-VK GPM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VK GPM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C29F4CA784DDADDA6070707 /* Pods-VK GPM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPM.release.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPM/Pods-VK GPM.release.xcconfig"; sourceTree = "<group>"; };
+		7F0F02F0E3A2988851DC73C8 /* Pods-VK GPM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPM/Pods-VK GPM.debug.xcconfig"; sourceTree = "<group>"; };
+		7FFB67B24E7F1D698A99D11F /* Pods-VK GPMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPMTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPMTests/Pods-VK GPMTests.release.xcconfig"; sourceTree = "<group>"; };
+		88E3F67B6B21D17F71D4553E /* libPods-VK GPMTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VK GPMTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2523B37374289874DCBD11A /* libPods-VK GPMUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VK GPMUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0253ADC2023B43C007D6B9E /* VK GPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK GPM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0253ADF2023B43C007D6B9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C0253AE02023B43C007D6B9E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C0253AE22023B43C007D6B9E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C0253AE32023B43C007D6B9E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C0253AE62023B43C007D6B9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0253AE92023B43C007D6B9E /* VK_GPM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VK_GPM.xcdatamodel; sourceTree = "<group>"; };
+		C0253AEE2023B43C007D6B9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0253AF02023B43C007D6B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0253AF12023B43C007D6B9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C0253AF72023B43C007D6B9E /* VK GPMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VK GPMTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0253AFB2023B43C007D6B9E /* VK_GPMTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VK_GPMTests.m; sourceTree = "<group>"; };
+		C0253AFD2023B43C007D6B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0253B022023B43C007D6B9E /* VK GPMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VK GPMUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0253B062023B43C007D6B9E /* VK_GPMUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VK_GPMUITests.m; sourceTree = "<group>"; };
+		C0253B082023B43C007D6B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C02931732039AEB90035CCD0 /* VKToolbarSettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKToolbarSettingsTableViewController.h; sourceTree = "<group>"; };
+		C02931742039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKToolbarSettingsTableViewController.m; sourceTree = "<group>"; };
+		C0293179203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKToolbarSettingsTableViewCell.h; sourceTree = "<group>"; };
+		C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKToolbarSettingsTableViewCell.m; sourceTree = "<group>"; };
+		C029317F203A1F330035CCD0 /* UIView+UITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UITableViewCell.h"; sourceTree = "<group>"; };
+		C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UITableViewCell.m"; sourceTree = "<group>"; };
+		C0293182203E2AC00035CCD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C050AE292024C6C700491CBA /* VKRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKRequestManager.h; sourceTree = "<group>"; };
+		C050AE2A2024C6C700491CBA /* VKRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKRequestManager.m; sourceTree = "<group>"; };
+		C050AE2C2024D01800491CBA /* VKLogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKLogInViewController.h; sourceTree = "<group>"; };
+		C050AE2D2024D01800491CBA /* VKLogInViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKLogInViewController.m; sourceTree = "<group>"; };
+		C050AE2F2025D48D00491CBA /* VKAccessToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKAccessToken.h; sourceTree = "<group>"; };
+		C050AE302025D48D00491CBA /* VKAccessToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKAccessToken.m; sourceTree = "<group>"; };
+		C050AE3420260E7C00491CBA /* VKModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKModels.h; sourceTree = "<group>"; };
+		C050AE3520260E7C00491CBA /* VKModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKModels.m; sourceTree = "<group>"; };
+		C050AE3720260EBE00491CBA /* VKUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKUser.h; sourceTree = "<group>"; };
+		C050AE3820260EBE00491CBA /* VKUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKUser.m; sourceTree = "<group>"; };
+		C0553DDD202E4A41004CA396 /* VKGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroup.h; sourceTree = "<group>"; };
+		C0553DDE202E4A41004CA396 /* VKGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroup.m; sourceTree = "<group>"; };
+		C077D7CA20308DFE001DCF6E /* VKHelpFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHelpFunction.h; sourceTree = "<group>"; };
+		C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKHelpFunction.m; sourceTree = "<group>"; };
+		C077D7CD2030C21B001DCF6E /* VKGroupTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupTableViewCell.h; sourceTree = "<group>"; };
+		C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupTableViewCell.m; sourceTree = "<group>"; };
+		C077D7D02030DF8A001DCF6E /* VKGroupWallTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupWallTableViewController.h; sourceTree = "<group>"; };
+		C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupWallTableViewController.m; sourceTree = "<group>"; };
+		C0B7E9712028E3CB0050F816 /* CoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		C0B7E9722028E3CB0050F816 /* CoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		C0B7E977202A43C40050F816 /* VKStartAutorizationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKStartAutorizationViewController.h; sourceTree = "<group>"; };
+		C0B7E978202A43C40050F816 /* VKStartAutorizationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKStartAutorizationViewController.m; sourceTree = "<group>"; };
+		C0B7E9BE202E34990050F816 /* VKUserGroupsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKUserGroupsTableViewController.h; sourceTree = "<group>"; };
+		C0B7E9BF202E34990050F816 /* VKUserGroupsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKUserGroupsTableViewController.m; sourceTree = "<group>"; };
+		C0CBBFD72030F758008A67B4 /* VKGroupPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupPost.h; sourceTree = "<group>"; };
+		C0CBBFD82030F758008A67B4 /* VKGroupPost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupPost.m; sourceTree = "<group>"; };
+		C0CBBFDA20336DF6008A67B4 /* VKNewPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKNewPostViewController.h; sourceTree = "<group>"; };
+		C0CBBFDB20336DF6008A67B4 /* VKNewPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKNewPostViewController.m; sourceTree = "<group>"; };
+		E196E3C2C8A2E908C41304F7 /* Pods-VK GPMUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPMUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPMUITests/Pods-VK GPMUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F33433A5F5DCC60780F123A9 /* Pods-VK GPMUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPMUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPMUITests/Pods-VK GPMUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0253AD92023B43C007D6B9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DBFD145A887FBF17842AB35 /* libPods-VK GPM.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0253AF42023B43C007D6B9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9166A211696E71B7A0D0968D /* libPods-VK GPMTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0253AFF2023B43C007D6B9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D031DE7230F0A1414413E791 /* libPods-VK GPMUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95A113E030EF3265F1ABA951 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F0F02F0E3A2988851DC73C8 /* Pods-VK GPM.debug.xcconfig */,
+				7C29F4CA784DDADDA6070707 /* Pods-VK GPM.release.xcconfig */,
+				3094980A357EE4196776FFFE /* Pods-VK GPMTests.debug.xcconfig */,
+				7FFB67B24E7F1D698A99D11F /* Pods-VK GPMTests.release.xcconfig */,
+				E196E3C2C8A2E908C41304F7 /* Pods-VK GPMUITests.debug.xcconfig */,
+				F33433A5F5DCC60780F123A9 /* Pods-VK GPMUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C0253AD32023B43B007D6B9E = {
+			isa = PBXGroup;
+			children = (
+				C029317F203A1F330035CCD0 /* UIView+UITableViewCell.h */,
+				C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */,
+				C0293179203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.h */,
+				C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */,
+				C02931732039AEB90035CCD0 /* VKToolbarSettingsTableViewController.h */,
+				C02931742039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m */,
+				C0CBBFDA20336DF6008A67B4 /* VKNewPostViewController.h */,
+				C0CBBFDB20336DF6008A67B4 /* VKNewPostViewController.m */,
+				C077D7D02030DF8A001DCF6E /* VKGroupWallTableViewController.h */,
+				C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */,
+				C077D7CD2030C21B001DCF6E /* VKGroupTableViewCell.h */,
+				C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */,
+				C077D7CA20308DFE001DCF6E /* VKHelpFunction.h */,
+				C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */,
+				C0B7E9BE202E34990050F816 /* VKUserGroupsTableViewController.h */,
+				C0B7E9BF202E34990050F816 /* VKUserGroupsTableViewController.m */,
+				C050AE3320260D3200491CBA /* VK VIEWCONTROLLERS */,
+				C050AE282024C50D00491CBA /* VK MANAGER */,
+				C0253ADE2023B43C007D6B9E /* VK GPM */,
+				C050AE3220260CB000491CBA /* VK MODELS */,
+				C0253AFA2023B43C007D6B9E /* VK GPMTests */,
+				C0253B052023B43C007D6B9E /* VK GPMUITests */,
+				C0253ADD2023B43C007D6B9E /* Products */,
+				95A113E030EF3265F1ABA951 /* Pods */,
+				DEB1755842F3A0A67F5AB1AE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C0253ADD2023B43C007D6B9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0253ADC2023B43C007D6B9E /* VK GPM.app */,
+				C0253AF72023B43C007D6B9E /* VK GPMTests.xctest */,
+				C0253B022023B43C007D6B9E /* VK GPMUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0253ADE2023B43C007D6B9E /* VK GPM */ = {
+			isa = PBXGroup;
+			children = (
+				C0253ADF2023B43C007D6B9E /* AppDelegate.h */,
+				C0253AE02023B43C007D6B9E /* AppDelegate.m */,
+				C0253AE22023B43C007D6B9E /* ViewController.h */,
+				C0253AE32023B43C007D6B9E /* ViewController.m */,
+				C0253AE52023B43C007D6B9E /* Main.storyboard */,
+				C0253AED2023B43C007D6B9E /* LaunchScreen.storyboard */,
+				C0293182203E2AC00035CCD0 /* Assets.xcassets */,
+				C0253AF02023B43C007D6B9E /* Info.plist */,
+				C0253AF12023B43C007D6B9E /* main.m */,
+				C0253AE82023B43C007D6B9E /* VK_GPM.xcdatamodeld */,
+			);
+			path = "VK GPM";
+			sourceTree = "<group>";
+		};
+		C0253AFA2023B43C007D6B9E /* VK GPMTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0253AFB2023B43C007D6B9E /* VK_GPMTests.m */,
+				C0253AFD2023B43C007D6B9E /* Info.plist */,
+			);
+			path = "VK GPMTests";
+			sourceTree = "<group>";
+		};
+		C0253B052023B43C007D6B9E /* VK GPMUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C0253B062023B43C007D6B9E /* VK_GPMUITests.m */,
+				C0253B082023B43C007D6B9E /* Info.plist */,
+			);
+			path = "VK GPMUITests";
+			sourceTree = "<group>";
+		};
+		C050AE282024C50D00491CBA /* VK MANAGER */ = {
+			isa = PBXGroup;
+			children = (
+				C050AE292024C6C700491CBA /* VKRequestManager.h */,
+				C050AE2A2024C6C700491CBA /* VKRequestManager.m */,
+				C0B7E9712028E3CB0050F816 /* CoreDataManager.h */,
+				C0B7E9722028E3CB0050F816 /* CoreDataManager.m */,
+			);
+			path = "VK MANAGER";
+			sourceTree = "<group>";
+		};
+		C050AE3220260CB000491CBA /* VK MODELS */ = {
+			isa = PBXGroup;
+			children = (
+				C050AE2F2025D48D00491CBA /* VKAccessToken.h */,
+				C050AE302025D48D00491CBA /* VKAccessToken.m */,
+				C050AE3420260E7C00491CBA /* VKModels.h */,
+				C050AE3520260E7C00491CBA /* VKModels.m */,
+				C0CBBFD72030F758008A67B4 /* VKGroupPost.h */,
+				C0CBBFD82030F758008A67B4 /* VKGroupPost.m */,
+				C050AE3720260EBE00491CBA /* VKUser.h */,
+				C050AE3820260EBE00491CBA /* VKUser.m */,
+				C0553DDD202E4A41004CA396 /* VKGroup.h */,
+				C0553DDE202E4A41004CA396 /* VKGroup.m */,
+			);
+			path = "VK MODELS";
+			sourceTree = "<group>";
+		};
+		C050AE3320260D3200491CBA /* VK VIEWCONTROLLERS */ = {
+			isa = PBXGroup;
+			children = (
+				C0B7E977202A43C40050F816 /* VKStartAutorizationViewController.h */,
+				C0B7E978202A43C40050F816 /* VKStartAutorizationViewController.m */,
+				C050AE2C2024D01800491CBA /* VKLogInViewController.h */,
+				C050AE2D2024D01800491CBA /* VKLogInViewController.m */,
+			);
+			path = "VK VIEWCONTROLLERS";
+			sourceTree = "<group>";
+		};
+		DEB1755842F3A0A67F5AB1AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				459667A24BF4B739702F4DA2 /* libPods-VK GPM.a */,
+				88E3F67B6B21D17F71D4553E /* libPods-VK GPMTests.a */,
+				B2523B37374289874DCBD11A /* libPods-VK GPMUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0253ADB2023B43C007D6B9E /* VK GPM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0253B0B2023B43C007D6B9E /* Build configuration list for PBXNativeTarget "VK GPM" */;
+			buildPhases = (
+				BE56B7950736F9028C6E1FB9 /* [CP] Check Pods Manifest.lock */,
+				C0253AD82023B43C007D6B9E /* Sources */,
+				C0253AD92023B43C007D6B9E /* Frameworks */,
+				C0253ADA2023B43C007D6B9E /* Resources */,
+				32EE8057AEEB739978D22EAF /* [CP] Embed Pods Frameworks */,
+				42850ACAD493E8324871972A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VK GPM";
+			productName = "VK GPM";
+			productReference = C0253ADC2023B43C007D6B9E /* VK GPM.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0253AF62023B43C007D6B9E /* VK GPMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0253B0E2023B43C007D6B9E /* Build configuration list for PBXNativeTarget "VK GPMTests" */;
+			buildPhases = (
+				A42A1753C0370F05B1B5280E /* [CP] Check Pods Manifest.lock */,
+				C0253AF32023B43C007D6B9E /* Sources */,
+				C0253AF42023B43C007D6B9E /* Frameworks */,
+				C0253AF52023B43C007D6B9E /* Resources */,
+				D67A554846F8952DABFC1247 /* [CP] Embed Pods Frameworks */,
+				715EC4FCC282364079029934 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0253AF92023B43C007D6B9E /* PBXTargetDependency */,
+			);
+			name = "VK GPMTests";
+			productName = "VK GPMTests";
+			productReference = C0253AF72023B43C007D6B9E /* VK GPMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C0253B012023B43C007D6B9E /* VK GPMUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0253B112023B43C007D6B9E /* Build configuration list for PBXNativeTarget "VK GPMUITests" */;
+			buildPhases = (
+				6CEC16BD1800D1710A250DC7 /* [CP] Check Pods Manifest.lock */,
+				C0253AFE2023B43C007D6B9E /* Sources */,
+				C0253AFF2023B43C007D6B9E /* Frameworks */,
+				C0253B002023B43C007D6B9E /* Resources */,
+				4657F8ECB79BAE528B74330F /* [CP] Embed Pods Frameworks */,
+				590F0C5DBAB3EDB34B993ABD /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0253B042023B43C007D6B9E /* PBXTargetDependency */,
+			);
+			name = "VK GPMUITests";
+			productName = "VK GPMUITests";
+			productReference = C0253B022023B43C007D6B9E /* VK GPMUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0253AD42023B43C007D6B9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Clyde Barrow";
+				TargetAttributes = {
+					C0253ADB2023B43C007D6B9E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					C0253AF62023B43C007D6B9E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C0253ADB2023B43C007D6B9E;
+					};
+					C0253B012023B43C007D6B9E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C0253ADB2023B43C007D6B9E;
+					};
+				};
+			};
+			buildConfigurationList = C0253AD72023B43C007D6B9E /* Build configuration list for PBXProject "VK GPM" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0253AD32023B43B007D6B9E;
+			productRefGroup = C0253ADD2023B43C007D6B9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0253ADB2023B43C007D6B9E /* VK GPM */,
+				C0253AF62023B43C007D6B9E /* VK GPMTests */,
+				C0253B012023B43C007D6B9E /* VK GPMUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0253ADA2023B43C007D6B9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0253AEF2023B43C007D6B9E /* LaunchScreen.storyboard in Resources */,
+				C0293183203E2AC10035CCD0 /* Assets.xcassets in Resources */,
+				C0253AE72023B43C007D6B9E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0253AF52023B43C007D6B9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0253B002023B43C007D6B9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32EE8057AEEB739978D22EAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VK GPM/Pods-VK GPM-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42850ACAD493E8324871972A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VK GPM/Pods-VK GPM-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4657F8ECB79BAE528B74330F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VK GPMUITests/Pods-VK GPMUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		590F0C5DBAB3EDB34B993ABD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VK GPMUITests/Pods-VK GPMUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CEC16BD1800D1710A250DC7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VK GPMUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		715EC4FCC282364079029934 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VK GPMTests/Pods-VK GPMTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A42A1753C0370F05B1B5280E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VK GPMTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE56B7950736F9028C6E1FB9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VK GPM-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D67A554846F8952DABFC1247 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VK GPMTests/Pods-VK GPMTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0253AD82023B43C007D6B9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C077D7D22030DF8A001DCF6E /* VKGroupWallTableViewController.m in Sources */,
+				C0253AE42023B43C007D6B9E /* ViewController.m in Sources */,
+				C0CBBFDC20336DF6008A67B4 /* VKNewPostViewController.m in Sources */,
+				C0B7E979202A43C40050F816 /* VKStartAutorizationViewController.m in Sources */,
+				C029317B203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m in Sources */,
+				C0553DDF202E4A41004CA396 /* VKGroup.m in Sources */,
+				C0253AEA2023B43C007D6B9E /* VK_GPM.xcdatamodeld in Sources */,
+				C0B7E9732028E3CB0050F816 /* CoreDataManager.m in Sources */,
+				C077D7CC20308DFE001DCF6E /* VKHelpFunction.m in Sources */,
+				C077D7CF2030C21B001DCF6E /* VKGroupTableViewCell.m in Sources */,
+				C02931752039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m in Sources */,
+				C050AE3620260E7C00491CBA /* VKModels.m in Sources */,
+				C050AE2B2024C6C700491CBA /* VKRequestManager.m in Sources */,
+				C050AE312025D48D00491CBA /* VKAccessToken.m in Sources */,
+				C0253AF22023B43C007D6B9E /* main.m in Sources */,
+				C0293181203A1F330035CCD0 /* UIView+UITableViewCell.m in Sources */,
+				C0253AE12023B43C007D6B9E /* AppDelegate.m in Sources */,
+				C0B7E9C0202E34990050F816 /* VKUserGroupsTableViewController.m in Sources */,
+				C050AE3920260EBE00491CBA /* VKUser.m in Sources */,
+				C050AE2E2024D01800491CBA /* VKLogInViewController.m in Sources */,
+				C0CBBFD92030F758008A67B4 /* VKGroupPost.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0253AF32023B43C007D6B9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0253AFC2023B43C007D6B9E /* VK_GPMTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0253AFE2023B43C007D6B9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0253B072023B43C007D6B9E /* VK_GPMUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0253AF92023B43C007D6B9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0253ADB2023B43C007D6B9E /* VK GPM */;
+			targetProxy = C0253AF82023B43C007D6B9E /* PBXContainerItemProxy */;
+		};
+		C0253B042023B43C007D6B9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0253ADB2023B43C007D6B9E /* VK GPM */;
+			targetProxy = C0253B032023B43C007D6B9E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C0253AE52023B43C007D6B9E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0253AE62023B43C007D6B9E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0253AED2023B43C007D6B9E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0253AEE2023B43C007D6B9E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0253B092023B43C007D6B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C0253B0A2023B43C007D6B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0253B0C2023B43C007D6B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F0F02F0E3A2988851DC73C8 /* Pods-VK GPM.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LX82RYCJ7;
+				INFOPLIST_FILE = "VK GPM/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gromwel.VK-GPM";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0253B0D2023B43C007D6B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C29F4CA784DDADDA6070707 /* Pods-VK GPM.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LX82RYCJ7;
+				INFOPLIST_FILE = "VK GPM/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gromwel.VK-GPM";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0253B0F2023B43C007D6B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3094980A357EE4196776FFFE /* Pods-VK GPMTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LX82RYCJ7;
+				INFOPLIST_FILE = "VK GPMTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gromwel.VK-GPMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK GPM.app/VK GPM";
+			};
+			name = Debug;
+		};
+		C0253B102023B43C007D6B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FFB67B24E7F1D698A99D11F /* Pods-VK GPMTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LX82RYCJ7;
+				INFOPLIST_FILE = "VK GPMTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gromwel.VK-GPMTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK GPM.app/VK GPM";
+			};
+			name = Release;
+		};
+		C0253B122023B43C007D6B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E196E3C2C8A2E908C41304F7 /* Pods-VK GPMUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LX82RYCJ7;
+				INFOPLIST_FILE = "VK GPMUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gromwel.VK-GPMUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "VK GPM";
+			};
+			name = Debug;
+		};
+		C0253B132023B43C007D6B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F33433A5F5DCC60780F123A9 /* Pods-VK GPMUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9LX82RYCJ7;
+				INFOPLIST_FILE = "VK GPMUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gromwel.VK-GPMUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "VK GPM";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0253AD72023B43C007D6B9E /* Build configuration list for PBXProject "VK GPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0253B092023B43C007D6B9E /* Debug */,
+				C0253B0A2023B43C007D6B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0253B0B2023B43C007D6B9E /* Build configuration list for PBXNativeTarget "VK GPM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0253B0C2023B43C007D6B9E /* Debug */,
+				C0253B0D2023B43C007D6B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0253B0E2023B43C007D6B9E /* Build configuration list for PBXNativeTarget "VK GPMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0253B0F2023B43C007D6B9E /* Debug */,
+				C0253B102023B43C007D6B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0253B112023B43C007D6B9E /* Build configuration list for PBXNativeTarget "VK GPMUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0253B122023B43C007D6B9E /* Debug */,
+				C0253B132023B43C007D6B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C0253AE82023B43C007D6B9E /* VK_GPM.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C0253AE92023B43C007D6B9E /* VK_GPM.xcdatamodel */,
+			);
+			currentVersion = C0253AE92023B43C007D6B9E /* VK_GPM.xcdatamodel */;
+			path = VK_GPM.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C0253AD42023B43C007D6B9E /* Project object */;
+}
