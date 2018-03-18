@@ -6,6 +6,9 @@
 //  Copyright © 2018 Clyde Barrow. All rights reserved.
 //
 
+#define VK_API_VERSION              @"5.8"
+
+
 #import "VKRequestManager.h"
 #import "VKLogInViewController.h"
 #import <AFHTTPSessionManager.h>
@@ -21,14 +24,20 @@
 @interface VKRequestManager()
 @property (nonatomic, strong) AFHTTPSessionManager * sessionManager;
 @property (nonatomic, strong) VKToken * accessToken;
+
+@property (nonatomic, strong) NSMutableArray * loadPosts;
+@property (nonatomic, assign) NSInteger postsCount;
+
 @end
 
 @implementation VKRequestManager
 
 
+
 #pragma mark - singletonInit
 + (VKRequestManager *) sharedManager {
     static VKRequestManager * manager = nil;
+    
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -156,6 +165,10 @@
                                                           handler:^(UIAlertAction * _Nonnull action) {
                                                               [[CoreDataManager sharedManager] deleteAllToken];
                                                               [self autorisationUserWithSplashScreen];
+                                                              
+                                                              
+                                                              //удаление настроек
+                                                              [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"buttons"];;
                                                           }];
     [alert addAction:actionCancel];
     [alert addAction:actionLogout];
@@ -166,19 +179,30 @@
 }
 
 
-- (void) postWallMessageWithOwnerID:(NSString *)ownerID message:(NSString *)message publishDate:(NSInteger)publishDate onSuccess:(void(^)(id successesMessage))success onFailure:(void(^)(NSError * error))failure {
+- (void) postWallMessageWithOwnerID:(NSString *)ownerID
+                            message:(NSString *)message
+                        publishDate:(NSInteger)publishDate
+                                ads:(NSInteger)flagAds
+                             signed:(NSInteger)flagSigned
+                          onSuccess:(void(^)(id successesMessage))success
+                          onFailure:(void(^)(NSError * error))failure {
     
     if (![ownerID hasPrefix:@"-"]) {
         ownerID = [@"-" stringByAppendingString:ownerID];
     }
     
+
     
     NSString * method = @"wall.post";
     NSDictionary * parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                  ownerID, @"owner_id",
                                  message, @"message",
+                                 @(flagSigned), @"signed",
+                                 @(flagAds), @"mark_as_ads",
+                                 @"1", @"from_group",
                                  @"", @"publish_date",
-                                 self.accessToken.token, @"access_token", nil];
+                                 self.accessToken.token, @"access_token",
+                                 VK_API_VERSION, @"version", nil];
     
     [self.sessionManager POST:method
                    parameters:parameters
@@ -209,29 +233,64 @@
                                  @(count), @"count",
                                  @"all", @"filter",
                                  @(0), @"extended",
-                                 @"", @"fields",
-                                 self.accessToken.token, @"access_token", nil];
+                                 @"first_name", @"fields",
+                                 self.accessToken.token, @"access_token",
+                                 VK_API_VERSION, @"version", nil];
     
     [self.sessionManager GET:method
                   parameters:parameters
                     progress:nil
                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         
                          NSArray * arrayPosts = [responseObject objectForKey:@"response"];
                          NSInteger count = [[arrayPosts firstObject] integerValue];
                          
-                         NSMutableArray * array = [[NSMutableArray alloc] init];
+                         //NSMutableArray * array = [[NSMutableArray alloc] init];
+                         
+                         self.loadPosts = [[NSMutableArray alloc] init];
+                         self.postsCount = arrayPosts.count;
+
                          if (arrayPosts.count > 1) {
                              for (int i = 1; i < arrayPosts.count; i ++) {
                                  NSDictionary * dict = [arrayPosts objectAtIndex:i];
-                                 VKGroupPost * post = [[VKGroupPost alloc] initWithResponseObject:dict];
-                                 [array addObject:post];
+
+
+                                 [[VKGroupPost alloc] postWithDictionary:dict completionBlock:^(VKGroupPost *post) {
+                                     [self.loadPosts addObject:post];
+                                     
+                                     if (self.loadPosts.count == self.postsCount - 1) {
+                                         
+                                         
+                                         [self.loadPosts sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                                             
+                                             VKGroupPost * post1 = (VKGroupPost *)obj1;
+                                             VKGroupPost * post2 = (VKGroupPost *)obj2;
+                                             
+                                             if (post1.index < post2.index) {
+                                                 return NSOrderedDescending;
+                                             } else if (post1.index > post2.index) {
+                                                 return NSOrderedAscending;
+                                             }
+                                             return NSOrderedSame;
+                                         }];
+                                         
+                                         if (success) {
+                                             success(self.loadPosts, count);
+                                         }
+                                     }
+                                 }];
+                         
+                                 
+                                 
+//                                 VKGroupPost * post = [[VKGroupPost alloc] initWithResponseObject:dict];
+//                                 [array addObject:post];
                              }
                          }
-                         
-                         if (success) {
-                             success(array, count);
-                         }
-                         
+     
+//                         if (success) {
+//                             success(array, count);
+//                         }
+     
                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                          
                      }];
@@ -248,7 +307,8 @@
                                  @(0), @"offset",
                                  @(15), @"count",
                                  @"1", @"extended",
-                                 self.accessToken.token, @"access_token", nil];
+                                 self.accessToken.token, @"access_token",
+                                 VK_API_VERSION, @"version", nil];
     
     [self.sessionManager GET:method
                   parameters:parameters
@@ -297,13 +357,19 @@
     NSString * method = @"users.get";
     NSDictionary * parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                  userID, @"user_ids",
-                                 @"photo_max_orig, online, domain, has_mobile, status, last_seen, nickname, screen_name", @"fields", nil];
+                                 @"first_name, photo_max_orig, online, domain, has_mobile, status, last_seen, nickname, screen_name", @"fields",
+                                 VK_API_VERSION, @"version",
+                                nil];
     
-    
+    //@"photo_max_orig, online, domain, has_mobile, status, last_seen, nickname, screen_name"
     [self.sessionManager GET:method
                   parameters:parameters
                     progress:nil
                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         
+                         
+                         //NSLog(@"БЕРЕМ ИМЯ\n%@", responseObject);
+                         
                          
                          NSArray * userArray = [responseObject objectForKey:@"response"];
                          if (userArray.count > 0) {

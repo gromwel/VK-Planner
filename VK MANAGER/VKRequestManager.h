@@ -22,9 +22,9 @@
 - (void) getGroupsWithOffset:(NSInteger)offset count:(NSInteger)count onSucces:(void(^)(NSArray * groups))succes onFailure:(void(^)(NSError * error, NSInteger statusCode))failure;
 - (void) getPostsOnWallGroupID:(NSString *)groupID offset:(NSInteger)offset count:(NSInteger)count onSuccess:(void(^)(NSArray * posts, NSInteger count))success onFailure:(void(^)(NSError * error, NSInteger statusCode))failure;
 
-- (void) postWallMessageWithOwnerID:(NSString *)ownerID message:(NSString *)message publishDate:(NSInteger)publishDate onSuccess:(void(^)(id successesMessage))success onFailure:(void(^)(NSError * error))failure;
+//- (void) postWallMessageWithOwnerID:(NSString *)ownerID message:(NSString *)message publishDate:(NSInteger)publishDate onSuccess:(void(^)(id successesMessage))success onFailure:(void(^)(NSError * error))failure;
 
-
+- (void) postWallMessageWithOwnerID:(NSString *)ownerID message:(NSString *)message publishDate:(NSInteger)publishDate ads:(NSInteger)flagAds signed:(NSInteger)flagSigned onSuccess:(void(^)(id successesMessage))success onFailure:(void(^)(NSError * error))failure;
 
 - (void) newWallMessageWithGroup:(VKGroup *)group onSuccess:(void(^)(id responseObject))success onFailure:(void(^)(NSError * error))failure;
 

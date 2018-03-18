@@ -6,10 +6,14 @@
 //  Copyright © 2018 Clyde Barrow. All rights reserved.
 //
 
+
+
 #import "VKNewPostViewController.h"
 #import "VKRequestManager.h"
 #import "VKToolbarSettingsTableViewController.h"
 #import "VKHelpFunction.h"
+#import "VKSharedGroupsTableViewController.h"
+
 
 @interface VKNewPostViewController () <UITextViewDelegate>
 
@@ -23,6 +27,13 @@
 @property (nonatomic, strong) NSMutableArray * hidesButtons;
 
 @property (nonatomic, strong) NSMutableArray * toolbarItemsCustom;
+
+
+@property (nonatomic, strong) NSMutableArray * sharedGroups;
+
+
+@property (nonatomic, assign) BOOL flagAds;
+@property (nonatomic, assign) BOOL flagSigned;
                        
 @end
 
@@ -32,11 +43,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
 
     //инициализация массива
+    self.sharedGroups = [[NSMutableArray alloc] initWithObjects:self.group, nil];;
+    
     self.showsButtons = [[NSMutableArray alloc] init];
     self.hidesButtons = [[NSMutableArray alloc] init];
     self.toolbarItemsCustom = [[NSMutableArray alloc] init];
+    
+    
+    self.flagAds = NO;
+    self.flagSigned = NO;
     
     
     //проверяем на настроенные кнопки
@@ -149,6 +168,14 @@
     for (NSMutableDictionary * button in self.showsButtons) {
         [self.toolbarItemsCustom addObject:flexible];
         UIBarButtonItem * buttonItem = [self createBarButtonItemWithDictionary:button];
+        
+//        BOOL flagSel = [button objectForKey:@"buttonSelected"];
+//        if (!flagSel) {
+//            buttonItem.tintColor = [UIColor cyanColor];
+//        } else {
+//            buttonItem.tintColor = [UIColor orangeColor];
+//        }
+        
         [self.toolbarItemsCustom addObject:buttonItem];
         [self.toolbarItemsCustom addObject:flexible];
     }
@@ -164,62 +191,70 @@
     [self.textView becomeFirstResponder];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSUserDefaults * settings = [NSUserDefaults standardUserDefaults];
+    [settings setObject:self.arrayButtons forKey:@"buttons"];
+}
+
 
 - (void) createButtonsDictionary {
     
     //кнопка рекламы
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeAds name:@"Реклама" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeAds name:@"Реклама" switchOn:NO selected:NO];
     
     
     //кнопка скрепки
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeClip name:@"Вложения" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeClip name:@"Вложения" switchOn:NO selected:NO];
         
     
-    //кнопка контакта
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeContact name:@"Контакт" switchOn:NO];
+    //кнопка контакт
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeContact name:@"Контакт" switchOn:NO selected:NO];
     
     
     //кнопка фото
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypePhoto name:@"Фото" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypePhoto name:@"Фото" switchOn:NO selected:NO];
         
     
     //кнопка геолакации
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypePlace name:@"Геолокация" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypePlace name:@"Геолокация" switchOn:NO selected:NO];
     
         
     //кнопка опроса poll
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypePoll name:@"Опрос" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypePoll name:@"Опрос" switchOn:NO selected:NO];
         
         
     //кнопка асшарить в друггие свои групып
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeShare name:@"Поделиться" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeShare name:@"Поделиться" switchOn:NO selected:NO];
     
         
     //кнопка от имени сообщества
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeSigned name:@"От имени сообщества" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeSigned name:@"Подпись пользователя" switchOn:NO selected:NO];
         
         
     //кнопка таймера
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeTimer name:@"Отложенная запись" switchOn:NO];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeTimer name:@"Отложенная запись" switchOn:NO selected:NO];
     
     
     //кнопка остального
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeOther name:@"Остальное" switchOn:YES];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeOther name:@"Остальное" switchOn:YES selected:NO];
     
     
     //кнопка настроек
-    [self creareDictionaryButtonWithType:VKToolbarButtonTypeSettings name:@"Настройки" switchOn:YES];
+    [self creareDictionaryButtonWithType:VKToolbarButtonTypeSettings name:@"Настройки" switchOn:YES selected:NO];
 
 }
 
 
-- (void) creareDictionaryButtonWithType:(VKToolbarButtonType)type name:(NSString *)name switchOn:(BOOL)flagOn {
+- (void) creareDictionaryButtonWithType:(VKToolbarButtonType)type name:(NSString *)name switchOn:(BOOL)flagOn selected:(BOOL)flagSelected {
     NSNumber * numType = [[NSNumber alloc] initWithInteger:type];
     NSNumber * numOn = [[NSNumber alloc] initWithBool:flagOn];
+    NSNumber * numSel = [[NSNumber alloc] initWithBool:flagSelected];
     
     NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:name, @"buttonName",
                                         numType, @"buttonType",
-                                        numOn, @"buttonOn", nil];
+                                        numOn, @"buttonOn",
+                                        numSel, @"buttonSelected", nil];
     [self.arrayButtons addObject:dictionary];
 }
 
@@ -237,7 +272,12 @@
             button = [[UIBarButtonItem alloc] initWithImage:imButton
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
-                                                     action:@selector(toolBar2:)];
+                                                     action:@selector(toolBarSelected:)];
+            if (self.flagAds) {
+                button.tintColor = [UIColor orangeColor];
+            }
+            
+            button.tag = VKToolbarButtonTypeAds;
             //
             break;
             
@@ -248,6 +288,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolBar2:)];
+            button.tag = VKToolbarButtonTypeClip;
             //
             break;
             
@@ -258,6 +299,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolBar2:)];
+            button.tag = VKToolbarButtonTypeContact;
             //
             break;
             
@@ -268,6 +310,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolBar2:)];
+            button.tag = VKToolbarButtonTypePhoto;
             //
             break;
             
@@ -278,6 +321,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolBar2:)];
+            button.tag = VKToolbarButtonTypePlace;
             //
             break;
             
@@ -287,6 +331,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolBar2:)];
+            button.tag = VKToolbarButtonTypePoll;
             //
             break;
             
@@ -296,7 +341,8 @@
             button = [[UIBarButtonItem alloc] initWithImage:imButton
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
-                                                     action:@selector(toolBar2:)];
+                                                     action:@selector(toolBarSharedToGroups)];
+            button.tag = VKToolbarButtonTypeShare;
             //
             break;
             
@@ -306,7 +352,11 @@
             button = [[UIBarButtonItem alloc] initWithImage:imButton
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
-                                                     action:@selector(toolBar2:)];
+                                                     action:@selector(toolBarSelected:)];
+            if (self.flagSigned) {
+                button.tintColor = [UIColor orangeColor];
+            }
+            button.tag = VKToolbarButtonTypeSigned;
             //
             break;
             
@@ -317,6 +367,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolBar2:)];
+            button.tag = VKToolbarButtonTypeTimer;
             //
             break;
             
@@ -326,6 +377,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolbarOthers)];
+            button.tag = VKToolbarButtonTypeOther;
             //
             break;
             
@@ -336,6 +388,7 @@
                                                       style:UIBarButtonItemStylePlain
                                                      target:self
                                                      action:@selector(toolbarSettings)];
+            button.tag = VKToolbarButtonTypeSettings;
             //
             break;
             
@@ -371,6 +424,64 @@
 }
 
 
+- (void) toolBarSharedToGroups {
+    
+    VKSharedGroupsTableViewController * vc = [[VKSharedGroupsTableViewController alloc] initWithCompletionBlock:^(NSArray *groups) {
+        
+        if (groups) {
+            [self.sharedGroups removeAllObjects];
+            
+            for (VKGroup * group in groups) {
+                [self.sharedGroups addObject:group];
+            }
+        }
+    }];
+    
+    vc.currentGroup = self.group;
+    vc.arraySharedGroups = [NSMutableArray arrayWithArray:self.sharedGroups];
+    UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    //vc.view.backgroundColor = [UIColor brownColor];
+    [self presentViewController:navc animated:YES completion:^{
+
+    }];
+}
+
+
+- (void) toolBarSelected:(UIBarButtonItem *)sender {
+    NSLog(@"Меняем цвет кнопки");
+    //определить кнопку реклама или от сообщества
+    
+    BOOL selected = NO;
+    
+    if (sender.tag == VKToolbarButtonTypeAds) {
+        
+        self.flagAds = !self.flagAds;
+        selected = self.flagAds;
+        NSLog(@"ADS %d", self.flagAds);
+        
+        
+    } else if (sender.tag == VKToolbarButtonTypeSigned  ) {
+        
+        
+        self.flagSigned = !self.flagSigned;
+        selected = self.flagSigned;
+        NSLog(@"SIGNED %d", self.flagSigned);
+        
+        
+    }
+    
+    
+    if (selected) {
+        sender.tintColor = [UIColor orangeColor];
+    } else {
+        sender.tintColor = [UIColor colorWithRed:26.f/255.f green:135.f/255.f blue:254.f/255.f alpha:1.f];
+    }
+    
+    
+    
+}
+
 
 - (void) toolbarSettings {
     NSLog(@"Настройки");
@@ -390,8 +501,20 @@
         NSString * title = [button objectForKey:@"buttonName"];
         VKToolbarButtonType type = [[button objectForKey:@"buttonType"] intValue];
         
+        
+        
+        UIAlertActionStyle style = UIAlertActionStyleDefault;
+        
+        if ([title isEqualToString:@"Реклама"] & self.flagAds) {
+            style = UIAlertActionStyleDestructive;
+        } else if ([title isEqualToString:@"Подпись пользователя"] & self.flagSigned) {
+            style = UIAlertActionStyleDestructive;
+        }
+        
+        
+        
         UIAlertAction * action = [UIAlertAction actionWithTitle:title
-                                                          style:UIAlertActionStyleDefault
+                                                          style:style
                                                         handler:^(UIAlertAction * _Nonnull action) {
                                                             [self actionWithToolbarType:type];
                                                         }];
@@ -415,7 +538,9 @@
     switch (type) {
         case VKToolbarButtonTypeAds:
             //code
-            [self toolBar2:nil];
+           //[self toolBarSelected:nil];
+            self.flagAds = !self.flagAds;
+            NSLog(@"ADS %d", self.flagAds);
             //
             break;
             
@@ -456,14 +581,16 @@
             
         case VKToolbarButtonTypeShare:
             //code
-            [self toolBar2:nil];
+            [self toolBarSharedToGroups];
             //
             break;
             
             
         case VKToolbarButtonTypeSigned:
             //code
-            [self toolBar2:nil];
+            //[self toolBarSelected:nil];
+            self.flagSigned = !self.flagSigned;
+            NSLog(@"SIGNED %d", self.flagSigned);
             //
             break;
             
@@ -510,10 +637,37 @@
 //кнопка готово
 - (void) doneButton {
     self.navigationItem.rightBarButtonItem.enabled = NO;
-    [[VKRequestManager sharedManager] postWallMessageWithOwnerID:self.group.groupID
+    
+    
+    
+    NSLog(@"SHAR%@", self.sharedGroups);
+    if (self.sharedGroups.count > 1) {
+        NSLog(@"МНОГО ГРУПП");
+    } else {
+        NSLog(@"ОДНА ГРУППА");
+    }
+    
+    
+    for (VKGroup * group in self.sharedGroups) {
+        [self sendPostWithGroupID:group.groupID];
+    }
+
+}
+
+
+- (void) sendPostWithGroupID:(NSString *)groupID {
+    
+    NSInteger flAds = self.flagAds;
+    NSInteger flSig = self.flagSigned;
+    
+    [[VKRequestManager sharedManager] postWallMessageWithOwnerID:groupID
                                                          message:self.textView.text
                                                      publishDate:0
+                                                             ads:flAds//self.flagAds
+                                                          signed:flSig//self.flagSigned
                                                        onSuccess:^(id successesMessage) {
+                                                           
+                                                           
                                                            
                                                            self.response = successesMessage;
                                                            
@@ -523,17 +677,15 @@
                                                            [self.view endEditing:YES];
                                                            //алерт что  сообщение отправлено
                                                            [self alertSheetWithTitle:@"Сообщение опубликовано" message:@""];
-                                                           
-                                                       } onFailure:^(NSError *error) {
-                                                           
+                                                       }
+                                                       onFailure:^(NSError *error) {
                                                            self.response = error;
                                                            
                                                            //показываем алерт с ошибкой
                                                            [self alertSheetWithTitle:@"Ошибка" message:error.description];
-                                                           
                                                        }];
+    
 }
-
 
 
 //измененние текста

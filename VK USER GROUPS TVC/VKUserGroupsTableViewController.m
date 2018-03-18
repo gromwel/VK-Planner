@@ -274,7 +274,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    VKGroupWallTableViewController * vc = [[VKGroupWallTableViewController alloc] init];
+    
+    VKGroupWallTableViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GroupWall"];
+    //VKGroupWallTableViewController * vc = [[VKGroupWallTableViewController alloc] init];
     VKGroup * group = [self.groupsArray objectAtIndex:indexPath.row];
     vc.group = group;
     [self.navigationController pushViewController:vc animated:YES];

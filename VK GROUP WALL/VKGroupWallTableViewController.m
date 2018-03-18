@@ -11,6 +11,12 @@
 #import "VKGroupPost.h"
 #import "VKNewPostViewController.h"
 
+#import <UIImageView+AFNetworking.h>
+#import <UIImage+AFNetworking.h>
+
+#import "VKGroupHeaderTableViewCell.h"
+#import "VKGroupWallPostTableViewCell.h"
+
 @interface VKGroupWallTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray * arrayPosts;
@@ -131,7 +137,7 @@
                                                       NSMutableArray * arrayPath = [[NSMutableArray alloc] init];
                                                       for (int i = (int)(self.arrayPosts.count - posts.count); i < self.arrayPosts.count; i ++) {
                                                           
-                                                          NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:0];
+                                                          NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:1];
                                                           [arrayPath addObject:path];
                                                       }
                                                       
@@ -151,14 +157,16 @@
 
 
 - (void) getPostsReload {
+    NSLog(@"getPostsReload");
     
     [self.arrayPosts removeAllObjects];
+    
+    [self.tableView reloadData];
+    
     [[VKRequestManager sharedManager] getPostsOnWallGroupID:self.group.groupID
                                                      offset:self.arrayPosts.count
                                                       count:20
                                                   onSuccess:^(NSArray *posts, NSInteger count) {
-                                                      
-                                                      [self.tableView reloadData];
                                                       
                                                       //1. добавление в массив новыйх сообщений
                                                       [self.arrayPosts addObjectsFromArray:posts];
@@ -168,7 +176,7 @@
                                                       NSMutableArray * arrayPath = [[NSMutableArray alloc] init];
                                                       for (int i = (int)(self.arrayPosts.count - posts.count); i < self.arrayPosts.count; i ++) {
                                                           
-                                                          NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:0];
+                                                          NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:1];
                                                           [arrayPath addObject:path];
                                                       }
                                                       
@@ -197,10 +205,10 @@
                                                       
                                                       
                                                       //1. добавление в массив новыйх сообщений
-                                                      [self.arrayPosts insertObject:[posts firstObject] atIndex:0];
+                                                      [self.arrayPosts insertObject:[posts firstObject] atIndex:1];
                                                       
                                                       //2. просчет всех path
-                                                      NSIndexPath * path = [NSIndexPath indexPathForRow:0 inSection:0];
+                                                      NSIndexPath * path = [NSIndexPath indexPathForRow:0 inSection:1];
                                                       
                                                       
                                                       [self.refreshControl endRefreshing];
@@ -219,38 +227,77 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 1;
+    }
     return self.arrayPosts.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (self.count == self.arrayPosts.count ) {
-//        NSLog(@"то не грузим");
-//
-//    }
-    
-    
-    if ((indexPath.row == self.arrayPosts.count - 5) & (self.count != self.arrayPosts.count)) {
-        NSLog(@"Пора грузить еще");
-        [self getMorePosts];
+    /*
+    if (self.count == self.arrayPosts.count ) {
+        NSLog(@"то не грузим");
     }
+    */
     
+
+    
+    
+    /*
     static NSString * identifier = @"Cell";
-    
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    */
     
-    VKGroupPost * post = [self.arrayPosts objectAtIndex:indexPath.row];
+    
+    
+    
+    
+    if (indexPath.section == 0) {
+        VKGroupHeaderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"VKGroupHeaderTableViewCell"];
+        cell.labelNameGroup.text = self.group.name;
+        cell.labelTypeGroup.text = self.group.type;
+        [cell.imageGroup setImageWithURL:self.group.photoURL];
+        return cell;
+        
+    } else {
+        
+        if ((indexPath.row == self.arrayPosts.count - 5) & (self.count != self.arrayPosts.count)) {
+            NSLog(@"Пора грузить еще");
+            [self getMorePosts];
+        }
+        
+        
+        VKGroupPost * post = [self.arrayPosts objectAtIndex:indexPath.row];
+        VKGroupWallPostTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"VKGroupWallPostTableViewCell"];
+        cell.labelTextMessage.text = post.text;
+        cell.labelTextMessage.numberOfLines = 0;
+        cell.labelNameGroup.text = post.name;
+        [cell.imageGroup setImageWithURL:post.url];
+        
+        NSDateFormatter * form = [[NSDateFormatter alloc] init];
+        [form setDateFormat:@"dd MMM yyyy HH:mm"];
+        cell.labelDateMessage.text = [form stringFromDate:post.date];
+        
+        return cell;
+    }
+    
+    
+    /*
     cell.textLabel.text = post.text;
     cell.textLabel.numberOfLines = 0;
-    return cell;
+    */
+    
+
+    
+    return nil;
 }
 
 

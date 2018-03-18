@@ -21,6 +21,8 @@
 		C029317B203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */; };
 		C0293181203A1F330035CCD0 /* UIView+UITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */; };
 		C0293183203E2AC10035CCD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0293182203E2AC00035CCD0 /* Assets.xcassets */; };
+		C0356302205D662F007267E9 /* VKGroupHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0356301205D662F007267E9 /* VKGroupHeaderTableViewCell.m */; };
+		C0356305205D665C007267E9 /* VKGroupWallPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0356304205D665C007267E9 /* VKGroupWallPostTableViewCell.m */; };
 		C050AE2B2024C6C700491CBA /* VKRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE2A2024C6C700491CBA /* VKRequestManager.m */; };
 		C050AE2E2024D01800491CBA /* VKLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE2D2024D01800491CBA /* VKLogInViewController.m */; };
 		C050AE312025D48D00491CBA /* VKAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE302025D48D00491CBA /* VKAccessToken.m */; };
@@ -30,6 +32,7 @@
 		C077D7CC20308DFE001DCF6E /* VKHelpFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */; };
 		C077D7CF2030C21B001DCF6E /* VKGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */; };
 		C077D7D22030DF8A001DCF6E /* VKGroupWallTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */; };
+		C0A58E99205C40CB00597C53 /* VKSharedGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A58E98205C40CB00597C53 /* VKSharedGroupsTableViewController.m */; };
 		C0B7E9732028E3CB0050F816 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7E9722028E3CB0050F816 /* CoreDataManager.m */; };
 		C0B7E979202A43C40050F816 /* VKStartAutorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7E978202A43C40050F816 /* VKStartAutorizationViewController.m */; };
 		C0B7E9C0202E34990050F816 /* VKUserGroupsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B7E9BF202E34990050F816 /* VKUserGroupsTableViewController.m */; };
@@ -86,6 +89,10 @@
 		C029317F203A1F330035CCD0 /* UIView+UITableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UITableViewCell.h"; sourceTree = "<group>"; };
 		C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UITableViewCell.m"; sourceTree = "<group>"; };
 		C0293182203E2AC00035CCD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0356300205D662F007267E9 /* VKGroupHeaderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupHeaderTableViewCell.h; sourceTree = "<group>"; };
+		C0356301205D662F007267E9 /* VKGroupHeaderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupHeaderTableViewCell.m; sourceTree = "<group>"; };
+		C0356303205D665C007267E9 /* VKGroupWallPostTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupWallPostTableViewCell.h; sourceTree = "<group>"; };
+		C0356304205D665C007267E9 /* VKGroupWallPostTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupWallPostTableViewCell.m; sourceTree = "<group>"; };
 		C050AE292024C6C700491CBA /* VKRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKRequestManager.h; sourceTree = "<group>"; };
 		C050AE2A2024C6C700491CBA /* VKRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKRequestManager.m; sourceTree = "<group>"; };
 		C050AE2C2024D01800491CBA /* VKLogInViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKLogInViewController.h; sourceTree = "<group>"; };
@@ -104,6 +111,8 @@
 		C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupTableViewCell.m; sourceTree = "<group>"; };
 		C077D7D02030DF8A001DCF6E /* VKGroupWallTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupWallTableViewController.h; sourceTree = "<group>"; };
 		C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroupWallTableViewController.m; sourceTree = "<group>"; };
+		C0A58E97205C40CB00597C53 /* VKSharedGroupsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKSharedGroupsTableViewController.h; sourceTree = "<group>"; };
+		C0A58E98205C40CB00597C53 /* VKSharedGroupsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKSharedGroupsTableViewController.m; sourceTree = "<group>"; };
 		C0B7E9712028E3CB0050F816 /* CoreDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		C0B7E9722028E3CB0050F816 /* CoreDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		C0B7E977202A43C40050F816 /* VKStartAutorizationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKStartAutorizationViewController.h; sourceTree = "<group>"; };
@@ -162,22 +171,13 @@
 		C0253AD32023B43B007D6B9E = {
 			isa = PBXGroup;
 			children = (
-				C029317F203A1F330035CCD0 /* UIView+UITableViewCell.h */,
-				C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */,
-				C0293179203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.h */,
-				C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */,
-				C02931732039AEB90035CCD0 /* VKToolbarSettingsTableViewController.h */,
-				C02931742039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m */,
-				C0CBBFDA20336DF6008A67B4 /* VKNewPostViewController.h */,
-				C0CBBFDB20336DF6008A67B4 /* VKNewPostViewController.m */,
-				C077D7D02030DF8A001DCF6E /* VKGroupWallTableViewController.h */,
-				C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */,
-				C077D7CD2030C21B001DCF6E /* VKGroupTableViewCell.h */,
-				C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */,
-				C077D7CA20308DFE001DCF6E /* VKHelpFunction.h */,
-				C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */,
-				C0B7E9BE202E34990050F816 /* VKUserGroupsTableViewController.h */,
-				C0B7E9BF202E34990050F816 /* VKUserGroupsTableViewController.m */,
+				C0A58E97205C40CB00597C53 /* VKSharedGroupsTableViewController.h */,
+				C0A58E98205C40CB00597C53 /* VKSharedGroupsTableViewController.m */,
+				C0356306205D6C43007267E9 /* VK GROUP WALL */,
+				C0A58E96205B012800597C53 /* VK SHARED TVC */,
+				C0A58E95205B00DC00597C53 /* VK USER GROUPS TVC */,
+				C0A58E94205B008700597C53 /* HELP CLASS */,
+				C0A58E93205AFFA300597C53 /* VK NEW MESSAGE */,
 				C050AE3320260D3200491CBA /* VK VIEWCONTROLLERS */,
 				C050AE282024C50D00491CBA /* VK MANAGER */,
 				C0253ADE2023B43C007D6B9E /* VK GPM */,
@@ -235,6 +235,19 @@
 			path = "VK GPMUITests";
 			sourceTree = "<group>";
 		};
+		C0356306205D6C43007267E9 /* VK GROUP WALL */ = {
+			isa = PBXGroup;
+			children = (
+				C077D7D02030DF8A001DCF6E /* VKGroupWallTableViewController.h */,
+				C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */,
+				C0356300205D662F007267E9 /* VKGroupHeaderTableViewCell.h */,
+				C0356301205D662F007267E9 /* VKGroupHeaderTableViewCell.m */,
+				C0356303205D665C007267E9 /* VKGroupWallPostTableViewCell.h */,
+				C0356304205D665C007267E9 /* VKGroupWallPostTableViewCell.m */,
+			);
+			path = "VK GROUP WALL";
+			sourceTree = "<group>";
+		};
 		C050AE282024C50D00491CBA /* VK MANAGER */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +285,48 @@
 				C050AE2D2024D01800491CBA /* VKLogInViewController.m */,
 			);
 			path = "VK VIEWCONTROLLERS";
+			sourceTree = "<group>";
+		};
+		C0A58E93205AFFA300597C53 /* VK NEW MESSAGE */ = {
+			isa = PBXGroup;
+			children = (
+				C0293179203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.h */,
+				C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */,
+				C02931732039AEB90035CCD0 /* VKToolbarSettingsTableViewController.h */,
+				C02931742039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m */,
+				C0CBBFDA20336DF6008A67B4 /* VKNewPostViewController.h */,
+				C0CBBFDB20336DF6008A67B4 /* VKNewPostViewController.m */,
+			);
+			path = "VK NEW MESSAGE";
+			sourceTree = "<group>";
+		};
+		C0A58E94205B008700597C53 /* HELP CLASS */ = {
+			isa = PBXGroup;
+			children = (
+				C029317F203A1F330035CCD0 /* UIView+UITableViewCell.h */,
+				C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */,
+				C077D7CA20308DFE001DCF6E /* VKHelpFunction.h */,
+				C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */,
+			);
+			path = "HELP CLASS";
+			sourceTree = "<group>";
+		};
+		C0A58E95205B00DC00597C53 /* VK USER GROUPS TVC */ = {
+			isa = PBXGroup;
+			children = (
+				C077D7CD2030C21B001DCF6E /* VKGroupTableViewCell.h */,
+				C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */,
+				C0B7E9BE202E34990050F816 /* VKUserGroupsTableViewController.h */,
+				C0B7E9BF202E34990050F816 /* VKUserGroupsTableViewController.m */,
+			);
+			path = "VK USER GROUPS TVC";
+			sourceTree = "<group>";
+		};
+		C0A58E96205B012800597C53 /* VK SHARED TVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "VK SHARED TVC";
 			sourceTree = "<group>";
 		};
 		DEB1755842F3A0A67F5AB1AE /* Frameworks */ = {
@@ -573,14 +628,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0356305205D665C007267E9 /* VKGroupWallPostTableViewCell.m in Sources */,
 				C077D7D22030DF8A001DCF6E /* VKGroupWallTableViewController.m in Sources */,
 				C0253AE42023B43C007D6B9E /* ViewController.m in Sources */,
 				C0CBBFDC20336DF6008A67B4 /* VKNewPostViewController.m in Sources */,
 				C0B7E979202A43C40050F816 /* VKStartAutorizationViewController.m in Sources */,
 				C029317B203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m in Sources */,
+				C0A58E99205C40CB00597C53 /* VKSharedGroupsTableViewController.m in Sources */,
 				C0553DDF202E4A41004CA396 /* VKGroup.m in Sources */,
 				C0253AEA2023B43C007D6B9E /* VK_GPM.xcdatamodeld in Sources */,
 				C0B7E9732028E3CB0050F816 /* CoreDataManager.m in Sources */,
+				C0356302205D662F007267E9 /* VKGroupHeaderTableViewCell.m in Sources */,
 				C077D7CC20308DFE001DCF6E /* VKHelpFunction.m in Sources */,
 				C077D7CF2030C21B001DCF6E /* VKGroupTableViewCell.m in Sources */,
 				C02931752039AEB90035CCD0 /* VKToolbarSettingsTableViewController.m in Sources */,

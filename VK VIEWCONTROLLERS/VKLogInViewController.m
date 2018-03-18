@@ -115,7 +115,7 @@
 #pragma mark - UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    NSLog(@"REQUEST - %@", request);
+    //NSLog(@"REQUEST - %@", request);
     
     NSString * fragment = request.URL.fragment;
     
@@ -175,6 +175,7 @@
                                                   } onFailure:^(NSError *error) {
                                                       
                                                       //показываем алерт с ошибкой
+                                                      NSLog(@"Ошибка с получением имени");
                                                       [self alertSheetWithTitle:@"Ошибка" message:error.description];
                                                       
                                                   }];
