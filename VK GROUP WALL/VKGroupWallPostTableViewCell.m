@@ -17,6 +17,9 @@
     self.imageGroup.layer.masksToBounds = YES;
     self.imageGroup.layer.cornerRadius = CGRectGetHeight(self.imageGroup.frame)/2;
     
+    self.labelCreator.alpha = 0.f;
+    self.imageAds.alpha = 0.f;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

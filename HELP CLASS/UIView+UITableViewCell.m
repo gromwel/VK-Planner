@@ -10,16 +10,21 @@
 
 @implementation UIView (UITableViewCell)
 
+
+//  Метод определяющий ячейку на которой расположен переключатель
 - (UITableViewCell *) superCell {
     
+    //  Если супервью
     if (!self.superview) {
         return nil;
     }
     
+    //  Если супервью это селл то возвращаем этот селл
     if ([self.superview isKindOfClass:[UITableViewCell class]]) {
         return (UITableViewCell *)self.superview;
     }
     
+    //  Если это не супер вью то еще раз проделываем эту операцию
     return [self.superview superCell];
 }
 

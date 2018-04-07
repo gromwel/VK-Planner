@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         
+        //  Парсим пришедшую коллекцию 
         //NSString
         self.domain = [dictionary objectForKey:@"domain"];
         self.firstName = [dictionary objectForKey:@"first_name"];

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Clyde Barrow. All rights reserved.
 //
 
+
 #import "VKUserGroupsTableViewController.h"
 #import "CoreDataManager.h"
 #import "VKRequestManager.h"
@@ -23,8 +24,13 @@
 
 @interface VKUserGroupsTableViewController ()
 
+//  Массив групп
 @property (nonatomic, strong) NSMutableArray * groupsArray;
+
+//  Флаг первого запуска
 @property (nonatomic, assign) BOOL firstStart;
+
+//  Нынешний юзер
 @property (nonatomic, strong) VKUser * currentUser;
 
 
@@ -32,37 +38,32 @@
 
 @implementation VKUserGroupsTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //  Определение и инициализация переменных
     self.firstStart = YES;
     self.groupsArray = [[NSMutableArray alloc] init];
     self.currentUser = [[VKUser alloc] init];
     
     
-    
-    
-    
-    //
-    
-    //1. добавление кнопки выйти
+    //  Добавление кнопки выйти
     UIBarButtonItem * leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Выйти"
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(logout)] ;
-    
     self.navigationItem.leftBarButtonItem = leftButton;
     
+    
+    //  Устанока тайтла
     self.navigationItem.title = @"Управление";
     
     
-    
-    //2.рефреш контроллер
+    //  Рефреш контроллер
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getGroupsRefresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Обновление..."];
-    //[self.refreshControl beginRefreshing];
-
-    
 }
 
 
@@ -70,47 +71,55 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSLog(@"viewWillAppear");
-    
+    //  Ели первый старт то запускаем метод старта с экраном
     if (self.firstStart) {
-        [[VKRequestManager sharedManager] autorisationUserWithSplashScreen];
-        VKToken * token = [[CoreDataManager sharedManager] token];
-        if (token) {
-            
-                [self getGroups];
-                self.firstStart = NO;
+        
+        //  Если есть токен то берем группы и меняем флаг иниче запускаем авторизацию
+        if ([[CoreDataManager sharedManager] token]) {
+            [self getGroups];
+            self.firstStart = NO;
+        } else {
+            [[VKRequestManager sharedManager] autorisationUserWithSplashScreen];
         }
-        
-        
     }
     
-    //2.добавление аватарки
+    
+    //  Добавление аватарки
     VKToken * token = [[CoreDataManager sharedManager] token];
+    
+    //  Запрос юзера
     [[VKRequestManager sharedManager] getUserWithUserID:token.userID
                                               onSuccess:^(VKUser *user) {
                                                   
+                                                  //    Создание аваторки кнопки
                                                   [self createAvatarBarButtonItemWithURL:user.photo];
                                                   
                                               } onFailure:^(NSError *error) {
-                                                  
                                               }];
 }
 
+
+
+
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSLog(@"viewDidAppear");
 }
 
 
 
+//  Создание аватарки кнопки из ссылки на картинку
 - (void) createAvatarBarButtonItemWithURL:(NSURL *)url {
+    
+    //  Создаем реквест
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     
+    //  Создаем навигейшн
     UINavigationController * navigation = [[UINavigationController alloc] init];
     CGFloat lenght = navigation.navigationBar.frame.size.height/3 * 2;
     CGFloat heightBar = navigation.navigationBar.frame.size.height;
     
     
+    //  Кастомная кнопка
     UIButton * customButton = [UIButton buttonWithType:UIButtonTypeCustom];
     customButton.frame = CGRectMake(0, 0, heightBar, heightBar);
     customButton.contentMode = UIViewContentModeScaleToFill;
@@ -118,62 +127,66 @@
     customButton.imageView.layer.masksToBounds = YES;
     
 
-    
+    //  Добавляем таргет к кнопке
     [customButton addTarget:self action:@selector(rightButton) forControlEvents:UIControlEventTouchUpInside];
     
     
+    //  Загрузка картинки в кнопку
     __weak UIButton * weakButton = customButton;
     [customButton.imageView setImageWithURLRequest:request
                                   placeholderImage:nil
                                            success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
                                                
+                                               //   Ресайз изображения после загрузки и установка
                                                UIImage * after = [UIImage imageWithCGImage:image.CGImage
                                                                                      scale:CGImageGetHeight(image.CGImage)/lenght
                                                                                orientation:UIImageOrientationUp];
                                                
                                                [weakButton setImage:after forState:UIControlStateNormal];
                                                
+                                               
                                            } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
                                                NSLog(@"ERROR - %@", error.description);
                                            }];
     
+    
+    //  Создание бар баттона и установка
     UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithCustomView:weakButton];
     self.navigationItem.rightBarButtonItem = button;
 }
 
 
 
+//  Правая кнопка
 - (void) rightButton {
-    NSLog(@"AVATAR");
     [[VKRequestManager sharedManager] logoutUser];
 }
 
 
-
+//  Разлогин
 - (void) logout {
     [[VKRequestManager sharedManager] logoutUser];
 }
 
 
-
-
-
-
+//  Перезагрузка групп
 - (void) getGroupsRefresh {
     
+    //  Очистка массива
     [self.groupsArray removeAllObjects];
     
+    //  Запрос групп пользователя
     [[VKRequestManager sharedManager] getGroupsWithOffset:self.groupsArray.count
-                                                    count:15
+                                                    count:1000
                                                  onSucces:^(NSArray *groups) {
                                                      
-                                                     
+                                                     // Перезагрузка таблицы (пустая)
                                                      [self.tableView reloadData];
                                                      
-                                                     //1.добавить группы в массив
+                                                     // Добавить группы в массив
                                                      [self.groupsArray addObjectsFromArray:groups];
                                                      
-                                                     //2.создать массив path для добавления в таблицу
+                                                     // Создать массив path для добавления в таблицу
                                                      NSMutableArray * mArray = [[NSMutableArray alloc] init];
                                                      
                                                      for (int i = (int)(self.groupsArray.count - groups.count); i < self.groupsArray.count; i++) {
@@ -181,33 +194,34 @@
                                                          [mArray addObject:path];
                                                      }
                                                      
+                                                     // Завершение рефреша
                                                      [self.refreshControl endRefreshing];
                                                      
-                                                     //3.добавить ячейки в баблицу
+                                                     // Добавить ячейки в баблицу
                                                      [self.tableView beginUpdates];
                                                      [self.tableView insertRowsAtIndexPaths:mArray withRowAnimation:UITableViewRowAnimationFade];
                                                      [self.tableView endUpdates];
                                                      
-                                                     
                                                  }
-                                                onFailure:^(NSError *error, NSInteger statusCode) {
-                                                    
-                                                    
-                                                    
-                                                    
+                                                onFailure:^(NSError *error) {
+                                                    NSLog(@"ERROR - %@", error.description);
                                                 }];
 }
 
+
+
+//  Запрос групп
 - (void) getGroups {
     
+    //  Запрос групп
     [[VKRequestManager sharedManager] getGroupsWithOffset:self.groupsArray.count
-                                                    count:15
+                                                    count:1000
                                                  onSucces:^(NSArray *groups) {
                                                      
-                                                     //1.добавить группы в массив
+                                                     // Добавить группы в массив
                                                      [self.groupsArray addObjectsFromArray:groups];
 
-                                                     //2.создать массив path для добавления в таблицу
+                                                     // Создать массив path для добавления в таблицу
                                                      NSMutableArray * mArray = [[NSMutableArray alloc] init];
                                                      
                                                      for (int i = (int)(self.groupsArray.count - groups.count); i < self.groupsArray.count; i++) {
@@ -215,21 +229,20 @@
                                                          [mArray addObject:path];
                                                      }
 
-                                                     //3.добавить ячейки в баблицу
+                                                     // Добавить ячейки в баблицу
                                                      [self.tableView beginUpdates];
                                                      [self.tableView insertRowsAtIndexPaths:mArray withRowAnimation:UITableViewRowAnimationFade];
                                                      [self.tableView endUpdates];
                                                      
+                                                     // Завершение рефреша
                                                      [self.refreshControl endRefreshing];
                                                      
                                                  }
-                                                onFailure:^(NSError *error, NSInteger statusCode) {
-                                                    
-                                                    
-                                                    
-                                                    
+                                                onFailure:^(NSError *error) {
+                                                    NSLog(@"ERROR - %@", error.description);
                                                 }];
 }
+
 
 
 
@@ -249,15 +262,6 @@
     
     static NSString * identifier = @"GroupCell";
     VKGroupTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-
-    
-    /*
-    static NSString * identifier = @"Cell";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-    }
-     */
     
     VKGroup * group = [self.groupsArray objectAtIndex:indexPath.row];
     cell.labelTitle.text = group.name;
@@ -266,19 +270,22 @@
     cell.imageGroupAvatar.layer.masksToBounds = YES;
     cell.imageGroupAvatar.layer.cornerRadius = cell.imageGroupAvatar.frame.size.height/2;
     
-    
     return cell;
 }
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    //  Создание таблицы записей стены
     VKGroupWallTableViewController * vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GroupWall"];
-    //VKGroupWallTableViewController * vc = [[VKGroupWallTableViewController alloc] init];
+    
+    //  Создание группы той на которую нажали и установка ее в проперти таблицы записей стены
     VKGroup * group = [self.groupsArray objectAtIndex:indexPath.row];
     vc.group = group;
+    
+    //  Добавление на навигейшн таблицу
     [self.navigationController pushViewController:vc animated:YES];
 }
 

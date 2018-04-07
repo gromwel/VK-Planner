@@ -69,7 +69,50 @@
 }
 
 
-//удаление всех токенов в кор дате
+
+
+
+#pragma mark - MethodsWithToken
+//  Создание нового токена из коолекции полученной с сервера
+- (VKToken *) newTokenWithDictionary:(NSDictionary *)dict {
+    
+    //  Проверяем на наличие токенов а кор дате
+    NSError * error = nil;
+    NSArray * array = [self.persistentContainer.viewContext executeFetchRequest:[VKToken fetchRequest]
+                                                                          error:&error];
+    
+    //  Если токен есть то удаляем его
+    if (array.count > 0) {
+        [self deleteAllToken];
+    }
+    
+    //  Создаем токен
+    VKToken * token = [NSEntityDescription insertNewObjectForEntityForName:@"VKToken"
+                                                    inManagedObjectContext:self.persistentContainer.viewContext];
+    
+    //  Определяем его параметры
+    token.token = [dict objectForKey:@"access_token"];
+    token.userID = [dict objectForKey:@"user_id"];
+    
+    
+    //  Проверяем наличие времени существования токена
+    if ([[dict objectForKey:@"expires_in"] doubleValue] == 0) {
+        token.offline = YES;
+    } else {
+        token.offline = NO;
+        NSTimeInterval interval = [[dict objectForKey:@"expires_in"] doubleValue];
+        token.expirationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+    }
+    
+    
+    //  Сохраняем
+    [self saveContext];
+    return token;
+}
+
+
+
+//  Удаление всех токенов в кор дате
 - (void) deleteAllToken {
     NSManagedObjectContext * context = self.persistentContainer.viewContext;
     NSError * error = nil;
@@ -82,39 +125,14 @@
 }
 
 
-//создаем новый токен
-- (VKToken *) newTokenWithDictionary:(NSDictionary *)dict {
-    //проверяем на наличие токенов
-    NSError * error = nil;
-    NSArray * array = [self.persistentContainer.viewContext executeFetchRequest:[VKToken fetchRequest]
-                                                                          error:&error];
-    if (array.count > 0) {
-        [self deleteAllToken];
-    }
-    
-    //создаем токен
-    VKToken * token = [NSEntityDescription insertNewObjectForEntityForName:@"VKToken"
-                                                    inManagedObjectContext:self.persistentContainer.viewContext];
-    //заполняем его
-    token.token = [dict objectForKey:@"access_token"];
-    token.userID = [dict objectForKey:@"user_id"];
-    if ([[dict objectForKey:@"expires_in"] doubleValue] == 0) {
-        token.offline = YES;
-    } else {
-        token.offline = NO;
-        NSTimeInterval interval = [[dict objectForKey:@"expires_in"] doubleValue];
-        token.expirationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
-    }
-    //сохраняем
-    [self saveContext];
-    return token;
-}
 
-//возвращаем токен из кор даты
+//  Возвращаем токен из кор даты
 - (VKToken *) token {
     NSError * error = nil;
     NSArray * array = [self.persistentContainer.viewContext executeFetchRequest:[VKToken fetchRequest]
                                                                           error:&error];
+    
+    //  Так как должен быть только один токен, проверяем на случай если токенов больше
     if (array.count == 1) {
         VKToken * token = [array firstObject];
         return token;

@@ -10,10 +10,14 @@
 
 @implementation VKAccessToken
 
+
+
 - (instancetype)initWithDictionary:(NSDictionary *)dict
 {
     self = [super init];
     if (self) {
+        
+        //  Установка пропертей токена из полученной коллекции
         self.token = [dict objectForKey:@"access_token"];
         self.userID = [dict objectForKey:@"user_id"];
         

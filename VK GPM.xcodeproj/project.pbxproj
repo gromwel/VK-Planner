@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7DBFD145A887FBF17842AB35 /* libPods-VK GPM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 459667A24BF4B739702F4DA2 /* libPods-VK GPM.a */; };
 		9166A211696E71B7A0D0968D /* libPods-VK GPMTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E3F67B6B21D17F71D4553E /* libPods-VK GPMTests.a */; };
+		C0182C0C20680BAD00C7D573 /* VKPostponedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0182C0B20680BAD00C7D573 /* VKPostponedViewController.m */; };
 		C0253AE12023B43C007D6B9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253AE02023B43C007D6B9E /* AppDelegate.m */; };
 		C0253AE42023B43C007D6B9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0253AE32023B43C007D6B9E /* ViewController.m */; };
 		C0253AE72023B43C007D6B9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0253AE52023B43C007D6B9E /* Main.storyboard */; };
@@ -66,6 +67,8 @@
 		7FFB67B24E7F1D698A99D11F /* Pods-VK GPMTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VK GPMTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VK GPMTests/Pods-VK GPMTests.release.xcconfig"; sourceTree = "<group>"; };
 		88E3F67B6B21D17F71D4553E /* libPods-VK GPMTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VK GPMTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2523B37374289874DCBD11A /* libPods-VK GPMUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VK GPMUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0182C0A20680BAD00C7D573 /* VKPostponedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKPostponedViewController.h; sourceTree = "<group>"; };
+		C0182C0B20680BAD00C7D573 /* VKPostponedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKPostponedViewController.m; sourceTree = "<group>"; };
 		C0253ADC2023B43C007D6B9E /* VK GPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VK GPM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0253ADF2023B43C007D6B9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0253AE02023B43C007D6B9E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,8 +174,6 @@
 		C0253AD32023B43B007D6B9E = {
 			isa = PBXGroup;
 			children = (
-				C0A58E97205C40CB00597C53 /* VKSharedGroupsTableViewController.h */,
-				C0A58E98205C40CB00597C53 /* VKSharedGroupsTableViewController.m */,
 				C0356306205D6C43007267E9 /* VK GROUP WALL */,
 				C0A58E96205B012800597C53 /* VK SHARED TVC */,
 				C0A58E95205B00DC00597C53 /* VK USER GROUPS TVC */,
@@ -290,6 +291,8 @@
 		C0A58E93205AFFA300597C53 /* VK NEW MESSAGE */ = {
 			isa = PBXGroup;
 			children = (
+				C0182C0A20680BAD00C7D573 /* VKPostponedViewController.h */,
+				C0182C0B20680BAD00C7D573 /* VKPostponedViewController.m */,
 				C0293179203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.h */,
 				C029317A203A18C20035CCD0 /* VKToolbarSettingsTableViewCell.m */,
 				C02931732039AEB90035CCD0 /* VKToolbarSettingsTableViewController.h */,
@@ -325,6 +328,8 @@
 		C0A58E96205B012800597C53 /* VK SHARED TVC */ = {
 			isa = PBXGroup;
 			children = (
+				C0A58E97205C40CB00597C53 /* VKSharedGroupsTableViewController.h */,
+				C0A58E98205C40CB00597C53 /* VKSharedGroupsTableViewController.m */,
 			);
 			path = "VK SHARED TVC";
 			sourceTree = "<group>";
@@ -652,6 +657,7 @@
 				C050AE3920260EBE00491CBA /* VKUser.m in Sources */,
 				C050AE2E2024D01800491CBA /* VKLogInViewController.m in Sources */,
 				C0CBBFD92030F758008A67B4 /* VKGroupPost.m in Sources */,
+				C0182C0C20680BAD00C7D573 /* VKPostponedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,40 +14,51 @@
 
 @interface VKStartAutorizationViewController ()
 
+//  Блок реализации
 @property (nonatomic, strong) VKTakeTokenBlock completionBlock;
 
 @end
 
 @implementation VKStartAutorizationViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
+    //  Сглаживание углов кнопки
     self.buttonLogin.layer.cornerRadius = self.buttonLogin.frame.size.height/5;
-
+    
+    //  Скрываем навигейшн бар
     self.navigationController.navigationBarHidden = YES;
 }
 
 
+
+//  Метод установки блока реализации
 - (void) takeToken:(VKTakeTokenBlock)success {
     self.completionBlock = success;
 }
 
 
-
-
-
+//  Реализация нажатия на кнопку
 - (IBAction)buttonLogin:(id)sender {
     
+    //  Инициализация объекта класса который прогружает в веб вью страницу авторизации
     VKLogInViewController * vk = [[VKLogInViewController alloc] initWithCompletionBlock:^(VKToken *token) {
+        
+        //  Если авторизация успешна и есть реализация блока мы получили токен то возвращаем этот токен
         if (token) {
             if (self.completionBlock) {
                 self.completionBlock(token);
             }
         }
+        
+        //  Если токен не пришел
     }];
     
     [self.navigationController pushViewController:vk animated:YES];
 }
+
+
 @end

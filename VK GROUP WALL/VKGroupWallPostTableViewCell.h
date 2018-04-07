@@ -15,4 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelDateMessage;
 @property (weak, nonatomic) IBOutlet UILabel *labelTextMessage;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelCreator;
+@property (weak, nonatomic) IBOutlet UIImageView *imageAds;
+
 @end
