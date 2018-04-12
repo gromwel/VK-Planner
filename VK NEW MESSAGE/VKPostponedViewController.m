@@ -7,6 +7,7 @@
 //
 
 #import "VKPostponedViewController.h"
+#import "UIColor+VKUIColor.h"
 
 @interface VKPostponedViewController ()
 
@@ -19,6 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //  Установка фона и цвета текста
+    self.labelPostponedDate.textColor = [UIColor basicVKColor];
+    self.labelPostponedTime.textColor = [UIColor basicVKColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.buttonCancelOutlet.backgroundColor = [UIColor basicVKColor];
     
     //  Создание и настройка левой и правой кнопки
     UIBarButtonItem * rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Готово" style:UIBarButtonItemStyleDone target:self action:@selector(rightButton)];
@@ -43,6 +49,10 @@
         //  Скрываем кнопку сблоса
         self.buttonCancelOutlet.alpha = 0.f;
     }
+    
+    
+    //  Тайтл
+    self.title = @"Дата публикации";
     
     
     //  Установка даты в лейблы

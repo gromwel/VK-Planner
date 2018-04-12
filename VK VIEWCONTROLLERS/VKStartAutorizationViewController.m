@@ -11,6 +11,7 @@
 #import "VKRequestManager.h"
 #import "VKLogInViewController.h"
 #import "VKAccessToken.h"
+#import "UIColor+VKUIColor.h"
 
 @interface VKStartAutorizationViewController ()
 
@@ -31,6 +32,13 @@
     
     //  Скрываем навигейшн бар
     self.navigationController.navigationBarHidden = YES;
+    
+    
+    //  Цвет кнопки ВОЙТИ
+    self.buttonLogin.backgroundColor = [UIColor additionalVKColor];
+    
+    //  Цвет фона
+    self.view.backgroundColor = [UIColor basicVKColor];
 }
 
 

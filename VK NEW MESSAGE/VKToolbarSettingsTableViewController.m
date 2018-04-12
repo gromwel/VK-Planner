@@ -12,6 +12,7 @@
 #import "VKToolbarSettingsTableViewCell.h"
 #import "UIView+UITableViewCell.h"
 #import "VKHelpFunction.h"
+#import "UIColor+VKUIColor.h"
 
 
 @interface VKToolbarSettingsTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -29,11 +30,14 @@
     
     
     //  Кнопка закрытия таблицы настройки кнопок тулбара
-    UIBarButtonItem * closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Готово"
-                                                                     style:UIBarButtonItemStyleDone
+    UIBarButtonItem * closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Назад"
+                                                                     style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(dismissSettings)];
-    self.navigationItem.rightBarButtonItem = closeButton;
+    self.navigationItem.leftBarButtonItem = closeButton;
+    
+    //  Тайтл
+    self.title = @"Кнопки";
 }
 
 

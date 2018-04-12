@@ -30,6 +30,7 @@
 		C050AE3620260E7C00491CBA /* VKModels.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE3520260E7C00491CBA /* VKModels.m */; };
 		C050AE3920260EBE00491CBA /* VKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C050AE3820260EBE00491CBA /* VKUser.m */; };
 		C0553DDF202E4A41004CA396 /* VKGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C0553DDE202E4A41004CA396 /* VKGroup.m */; };
+		C060CB6F207D29D500BDA713 /* UIColor+VKUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C060CB6E207D29D500BDA713 /* UIColor+VKUIColor.m */; };
 		C077D7CC20308DFE001DCF6E /* VKHelpFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */; };
 		C077D7CF2030C21B001DCF6E /* VKGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7CE2030C21B001DCF6E /* VKGroupTableViewCell.m */; };
 		C077D7D22030DF8A001DCF6E /* VKGroupWallTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C077D7D12030DF8A001DCF6E /* VKGroupWallTableViewController.m */; };
@@ -108,6 +109,8 @@
 		C050AE3820260EBE00491CBA /* VKUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKUser.m; sourceTree = "<group>"; };
 		C0553DDD202E4A41004CA396 /* VKGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroup.h; sourceTree = "<group>"; };
 		C0553DDE202E4A41004CA396 /* VKGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKGroup.m; sourceTree = "<group>"; };
+		C060CB6D207D29D500BDA713 /* UIColor+VKUIColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+VKUIColor.h"; sourceTree = "<group>"; };
+		C060CB6E207D29D500BDA713 /* UIColor+VKUIColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VKUIColor.m"; sourceTree = "<group>"; };
 		C077D7CA20308DFE001DCF6E /* VKHelpFunction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKHelpFunction.h; sourceTree = "<group>"; };
 		C077D7CB20308DFE001DCF6E /* VKHelpFunction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKHelpFunction.m; sourceTree = "<group>"; };
 		C077D7CD2030C21B001DCF6E /* VKGroupTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKGroupTableViewCell.h; sourceTree = "<group>"; };
@@ -306,6 +309,8 @@
 		C0A58E94205B008700597C53 /* HELP CLASS */ = {
 			isa = PBXGroup;
 			children = (
+				C060CB6D207D29D500BDA713 /* UIColor+VKUIColor.h */,
+				C060CB6E207D29D500BDA713 /* UIColor+VKUIColor.m */,
 				C029317F203A1F330035CCD0 /* UIView+UITableViewCell.h */,
 				C0293180203A1F330035CCD0 /* UIView+UITableViewCell.m */,
 				C077D7CA20308DFE001DCF6E /* VKHelpFunction.h */,
@@ -643,6 +648,7 @@
 				C0553DDF202E4A41004CA396 /* VKGroup.m in Sources */,
 				C0253AEA2023B43C007D6B9E /* VK_GPM.xcdatamodeld in Sources */,
 				C0B7E9732028E3CB0050F816 /* CoreDataManager.m in Sources */,
+				C060CB6F207D29D500BDA713 /* UIColor+VKUIColor.m in Sources */,
 				C0356302205D662F007267E9 /* VKGroupHeaderTableViewCell.m in Sources */,
 				C077D7CC20308DFE001DCF6E /* VKHelpFunction.m in Sources */,
 				C077D7CF2030C21B001DCF6E /* VKGroupTableViewCell.m in Sources */,

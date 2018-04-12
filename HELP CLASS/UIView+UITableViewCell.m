@@ -7,6 +7,7 @@
 //
 
 #import "UIView+UITableViewCell.h"
+#import "UIColor+VKUIColor.h"
 
 @implementation UIView (UITableViewCell)
 

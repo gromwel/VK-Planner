@@ -9,6 +9,7 @@
 #import "CoreDataManager.h"
 #import "VKToken+CoreDataClass.h"
 #import "VKToken+CoreDataProperties.h"
+#import "UIColor+VKUIColor.h"
 
 @implementation CoreDataManager
 

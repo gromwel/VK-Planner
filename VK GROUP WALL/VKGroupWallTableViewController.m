@@ -20,6 +20,8 @@
 #import "VKGroupHeaderTableViewCell.h"
 #import "VKGroupWallPostTableViewCell.h"
 
+#import "UIColor+VKUIColor.h"
+
 @interface VKGroupWallTableViewController ()
 
 
@@ -77,8 +79,11 @@
     
     //  Добавление рефреша
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Обновление..."];
-    //self.refreshControl.backgroundColor = [UIColor colorWithRed:100.f/255.f green:137.f/255.f blue:180.f/255.f alpha:0.8];
+    NSAttributedString * string = [[NSAttributedString alloc] initWithString:@"Обновление..." attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    self.refreshControl.attributedTitle = string; //[[NSAttributedString alloc] initWithString:@"Обновление..."];
+    
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    self.refreshControl.backgroundColor = [UIColor additionalVKColor];
     [self.refreshControl addTarget:self action:@selector(getPostsReload) forControlEvents:UIControlEventValueChanged];
     
     
@@ -473,6 +478,15 @@
             
         [cell.imageGroup setImageWithURL:post.url];
         cell.imageGroup.alpha = 0.5f;
+        
+        
+        //  Если пост имеем подпись
+        if (post.signerName) {
+            cell.labelCreator.alpha = 1.f;
+            NSString * name = [NSString stringWithFormat:@"%@", post.signerName];
+            cell.labelCreator.text = name;
+            cell.labelCreator.alpha = 0.5f;
+        }
             
         NSDateFormatter * form = [[NSDateFormatter alloc] init];
         [form setDateFormat:@"dd MMM yyyy HH:mm"];
@@ -492,7 +506,7 @@
         UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
         cell.textLabel.text = @"Показать запланированные";
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.textColor = [UIColor colorWithRed:100.f/255.f green:137.f/255.f blue:180.f/255.f alpha:1.f];
+        cell.textLabel.textColor = [UIColor additionalVKColor];
         return cell;
         
         
@@ -625,6 +639,89 @@
     }
 }
 
+
+
+
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //  Если удаление вызвано
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //  Создаем алерт контроллер с вопросом о удалении
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Удаление" message:@"Вы действительно хотите удалить этот пост?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction * ok = [UIAlertAction actionWithTitle:@"Удалить" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            
+            NSMutableArray * mArray = [[NSMutableArray alloc] init];
+            
+            //  Считать пост ID
+            if (indexPath.section == 1) {
+                mArray = self.arrayPostponedPosts;
+                
+            } else if (indexPath.section == 3) {
+                mArray = self.arrayPosts;
+                
+            }
+            
+            VKGroupPost * post = [mArray objectAtIndex:indexPath.row];
+            NSString * index = [NSString stringWithFormat:@"%li", post.index];
+            
+            //  Удалить пост по ID
+            [[VKRequestManager sharedManager] deleteWallPostWithPostID:index groupID:self.group.groupID
+                                    onSuccess:^(id responseObject) {
+                                        
+                                        NSString * response = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"response"]];
+                                        
+                                        if ([response isEqualToString:@"1"]) {
+                                            //  Удаление из массива
+                                            [mArray removeObject:post];
+                                            
+                                            //  Удаление ячейки
+                                            [tableView beginUpdates];
+                                            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+                                            [tableView endUpdates];
+                                            
+                                            
+                                        } else if ([responseObject objectForKey:@"error"]) {
+                                            NSDictionary * response = [responseObject objectForKey:@"error"];
+                                            [self showAlertWithTitle:@"Error" message:[response objectForKey:@"error_msg"]];
+                                        } else {
+                                            [self showAlertWithTitle:@"Ошибка" message:@"Пост не удален"];
+                                        }
+                                        
+                                    } onFailure:^(NSError *error) {
+                                        NSLog(@"ERROR - %@", error.description);
+                                    }];
+        }];
+        
+        
+        UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        
+        //  Показываем алерт
+        [self presentViewController:alert animated:YES completion:^{
+        }];
+    }
+}
+
+
+//  Алерт контроллер без кнопок
+- (void) showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    
+    UIAlertController * controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:controller animated:YES completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:^{
+            }];
+        });
+    }];
+}
 
 
 @end

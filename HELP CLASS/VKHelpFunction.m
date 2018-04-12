@@ -14,6 +14,7 @@
 #import "CoreDataManager.h"
 #import "VKRequestManager.h"
 #import "VKUser.h"
+#import "UIColor+VKUIColor.h"
 
 
 

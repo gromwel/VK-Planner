@@ -20,6 +20,8 @@
     self.labelCreator.alpha = 0.f;
     self.imageAds.alpha = 0.f;
     
+    self.labelDateMessage.textColor = [UIColor grayColor];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

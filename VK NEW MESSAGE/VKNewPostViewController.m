@@ -14,6 +14,7 @@
 #import "VKHelpFunction.h"
 #import "VKSharedGroupsTableViewController.h"
 #import "VKPostponedViewController.h"
+#import "UIColor+VKUIColor.h"
 
 
 
@@ -194,6 +195,7 @@
         
         //  Создаем кнопку из коллекции
         UIBarButtonItem * buttonItem = [self createBarButtonItemWithDictionary:button];
+        //buttonItem.tintColor = [UIColor lightGrayColor];
         
         [self.toolbarItemsCustom addObject:buttonItem];
         [self.toolbarItemsCustom addObject:flexible];
@@ -305,7 +307,9 @@
                                                      target:self
                                                      action:@selector(toolBarSelected:)];
             if (self.flagAds) {
-                button.tintColor = [UIColor orangeColor];
+                button.tintColor = [UIColor additionalVKColor];
+            } else {
+                button.tintColor = [UIColor lightGrayColor];
             }
             
             button.tag = VKToolbarButtonTypeAds;
@@ -320,6 +324,7 @@
                                                      target:self
                                                      action:@selector(toolBar2:)];
             button.tag = VKToolbarButtonTypeClip;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -331,6 +336,7 @@
                                                      target:self
                                                      action:@selector(toolBar2:)];
             button.tag = VKToolbarButtonTypeContact;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -342,6 +348,7 @@
                                                      target:self
                                                      action:@selector(toolBar2:)];
             button.tag = VKToolbarButtonTypePhoto;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -353,6 +360,7 @@
                                                      target:self
                                                      action:@selector(toolBar2:)];
             button.tag = VKToolbarButtonTypePlace;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -363,6 +371,7 @@
                                                      target:self
                                                      action:@selector(toolBar2:)];
             button.tag = VKToolbarButtonTypePoll;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -377,7 +386,9 @@
             
             
             if (self.sharedGroups.count > 1) {
-                button.tintColor = [UIColor orangeColor];
+                button.tintColor = [UIColor additionalVKColor];
+            } else {
+                button.tintColor = [UIColor lightGrayColor];
             }
             //
             break;
@@ -390,7 +401,9 @@
                                                      target:self
                                                      action:@selector(toolBarSelected:)];
             if (self.flagSigned) {
-                button.tintColor = [UIColor orangeColor];
+                button.tintColor = [UIColor additionalVKColor];
+            } else {
+                button.tintColor = [UIColor lightGrayColor];
             }
             button.tag = VKToolbarButtonTypeSigned;
             //
@@ -405,7 +418,9 @@
                                                      action:@selector(toolbarPostponed)];
             button.tag = VKToolbarButtonTypeTimer;
             if (self.postponedInterval > 0) {
-                button.tintColor = [UIColor orangeColor];
+                button.tintColor = [UIColor additionalVKColor];
+            } else {
+                button.tintColor = [UIColor lightGrayColor];
             }
             
             //
@@ -418,6 +433,7 @@
                                                      target:self
                                                      action:@selector(toolbarOthers)];
             button.tag = VKToolbarButtonTypeOther;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -429,6 +445,7 @@
                                                      target:self
                                                      action:@selector(toolbarSettings)];
             button.tag = VKToolbarButtonTypeSettings;
+            button.tintColor = [UIColor lightGrayColor];
             //
             break;
             
@@ -475,6 +492,7 @@
     
     
     label.text = text;
+    label.adjustsFontSizeToFitWidth = YES;
     label.textColor = [UIColor lightGrayColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:60.f];
@@ -547,9 +565,9 @@
     
     //  Если включена - оранжевый, если нет  то серый
     if (selected) {
-        sender.tintColor = [UIColor orangeColor];
+        sender.tintColor = [UIColor additionalVKColor];
     } else {
-        sender.tintColor = [UIColor colorWithRed:26.f/255.f green:135.f/255.f blue:254.f/255.f alpha:1.f];
+        sender.tintColor = [UIColor lightGrayColor];
     }
 }
 

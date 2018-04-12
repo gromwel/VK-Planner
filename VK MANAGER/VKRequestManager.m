@@ -22,6 +22,7 @@
 #import "VKGroup.h"
 #import "VKGroupPost.h"
 #import "VKNewPostViewController.h"
+#import "UIColor+VKUIColor.h"
 
 
 @interface VKRequestManager()
@@ -345,6 +346,35 @@
 
 
 
+//  Удаление сообщения со стены
+- (void) deleteWallPostWithPostID:(NSString *)postID groupID:(NSString *)groupID  onSuccess:(void(^)(id responseObject))success onFailure:(void(^)(NSError * error))failure {
+    
+    //  Проверка наличия тире
+    if (![groupID hasPrefix:@"-"]) {
+        groupID = [@"-" stringByAppendingString:groupID];
+    }
+    
+    //  Определение метода и парметров
+    NSString * method =@"wall.delete";
+    NSDictionary * parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 postID, @"post_id",
+                                 groupID, @"owner_id",
+                                 self.accessToken.token, @"access_token",
+                                 VK_API_VERSION, @"version",
+                                 nil];
+    
+    //  Запрос на удаление
+    [self.sessionManager GET:method
+                  parameters:parameters
+                    progress:nil
+                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                         if (success) {
+                             success(responseObject);
+                         }
+                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                         NSLog(@"ERROR - %@", error.description);
+                     }];
+}
 
 
 
@@ -502,6 +532,9 @@
     [current presentViewController:navc animated:YES completion:^{
     }];
 }
+
+
+
 
 
 

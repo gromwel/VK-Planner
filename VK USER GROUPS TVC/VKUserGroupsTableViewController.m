@@ -19,6 +19,7 @@
 #import "VKHelpFunction.h"
 #import "VKGroupTableViewCell.h"
 #import "VKGroupWallTableViewController.h"
+#import "UIColor+VKUIColor.h"
 
 
 
@@ -58,6 +59,7 @@
     
     //  Устанока тайтла
     self.navigationItem.title = @"Управление";
+    self.navigationController.navigationBar.barTintColor = [UIColor basicVKColor];
     
     
     //  Рефреш контроллер

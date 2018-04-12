@@ -11,6 +11,7 @@
 #import "VKUser.h"
 #import "VKToken+CoreDataClass.h"
 #import "CoreDataManager.h"
+#import "UIColor+VKUIColor.h"
 
 
 @interface VKLogInViewController () <UIWebViewDelegate, UINavigationControllerDelegate>

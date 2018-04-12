@@ -59,4 +59,7 @@ typedef enum {
 //  
 - (void) newWallMessageWithGroup:(VKGroup *)group onSuccess:(void(^)(id responseObject, VKPostType postType))success onFailure:(void(^)(NSError * error))failure;
 
+//
+- (void) deleteWallPostWithPostID:(NSString *)postID groupID:(NSString *)groupID  onSuccess:(void(^)(id responseObject))success onFailure:(void(^)(NSError * error))failure;
+
 @end

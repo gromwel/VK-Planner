@@ -7,12 +7,14 @@
 //
 
 #import "VKToolbarSettingsTableViewCell.h"
+#import "UIColor+VKUIColor.h"
 
 @implementation VKToolbarSettingsTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.switchOutlet.onTintColor = [UIColor additionalVKColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -8,6 +8,7 @@
 
 #import "VKSharedGroupsTableViewController.h"
 #import "VKRequestManager.h"
+#import "UIColor+VKUIColor.h"
 
 @interface VKSharedGroupsTableViewController ()
 
@@ -30,10 +31,21 @@
     [self loadAllGroups];
     
     //  Создание и установка кнопки правой
-    UIBarButtonItem * butoon = [[UIBarButtonItem alloc] initWithTitle:@"Готово" style:UIBarButtonItemStylePlain
+    UIBarButtonItem * butoon = [[UIBarButtonItem alloc] initWithTitle:@"Готово" style:UIBarButtonItemStyleDone
                                                                target:self
                                                                action:@selector(closeTable)];
     self.navigationItem.rightBarButtonItem = butoon;
+    
+    
+    UIBarButtonItem * leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Отмена" style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(closeView)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    
+    
+    //  Тайтл
+    self.title = @"Опубликовать в";
+    
 }
 
 
@@ -53,6 +65,11 @@
         self.completionBlock = completionBlock;
     }
     return self;
+}
+
+- (void) closeView {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 
