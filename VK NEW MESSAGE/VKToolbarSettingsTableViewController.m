@@ -153,44 +153,46 @@
         NSIndexPath * path = [self.tableView indexPathForCell:cell];
         NSMutableDictionary * button = [self.arrayButtons objectAtIndex:path.row];
         [button setObject:[[NSNumber alloc] initWithBool:sender.on] forKey:@"buttonOn"];
-    }
-    
-    if (!([self.tableView indexPathForCell:cell].row == self.arrayButtons.count - 2)) {
-        //  Если все показаны, то надо скрыть
-        NSMutableArray * arr = [[NSMutableArray alloc] init];
-        for (NSDictionary * dict in self.arrayButtons) {
-            
-            if (![[dict objectForKey:@"buttonOn"] boolValue]) {
-                [arr addObject:dict];
+        
+        
+        
+        if (!([self.tableView indexPathForCell:cell].row == self.arrayButtons.count - 2)) {
+            //  Если все показаны, то надо скрыть
+            NSMutableArray * arr = [[NSMutableArray alloc] init];
+            for (NSDictionary * dict in self.arrayButtons) {
+                
+                if (![[dict objectForKey:@"buttonOn"] boolValue]) {
+                    [arr addObject:dict];
+                }
             }
+            
+            //  Убирать кнопку Остальное в зависимости от включенных кнопок
+            //  Установим path кнопки которая отвечает за показ Остальное
+            NSIndexPath * pathMore = [NSIndexPath indexPathForRow:self.arrayButtons.count - 2 inSection:0];
+            
+            //  Берем ячейку этой кнопки
+            VKToolbarSettingsTableViewCell * cellMore = [self.tableView cellForRowAtIndexPath:pathMore];
+            
+            //  Берем коллекцию этой кнопки
+            NSMutableDictionary * buttonMore = [self.arrayButtons objectAtIndex:pathMore.row];
+            
+            
+            
+            BOOL flagOn;
+            
+            //  Если все кнопки показаны то отключаем кнопку
+            if (arr.count == 0) {
+                cellMore.userInteractionEnabled = NO;
+                flagOn = NO;
+            } else {
+                cellMore.userInteractionEnabled = YES;
+                flagOn = YES;
+            }
+            
+            //  Переключаем свитч, меняем настройки кнопки
+            cellMore.switchOutlet.on = flagOn;
+            [buttonMore setObject:[[NSNumber alloc] initWithBool:flagOn] forKey:@"buttonOn"];
         }
-        
-        //  Убирать кнопку Остальное в зависимости от включенных кнопок
-        //  Установим path кнопки которая отвечает за показ Остальное
-        NSIndexPath * pathMore = [NSIndexPath indexPathForRow:self.arrayButtons.count - 2 inSection:0];
-        
-        //  Берем ячейку этой кнопки
-        VKToolbarSettingsTableViewCell * cellMore = [self.tableView cellForRowAtIndexPath:pathMore];
-        
-        //  Берем коллекцию этой кнопки
-        NSMutableDictionary * buttonMore = [self.arrayButtons objectAtIndex:pathMore.row];
-        
-        
-        
-        BOOL flagOn;
-        
-        //  Если все кнопки показаны то отключаем кнопку
-        if (arr.count == 0) {
-            cellMore.userInteractionEnabled = NO;
-            flagOn = NO;
-        } else {
-            cellMore.userInteractionEnabled = YES;
-            flagOn = YES;
-        }
-        
-        //  Переключаем свитч, меняем настройки кнопки
-        cellMore.switchOutlet.on = flagOn;
-        [buttonMore setObject:[[NSNumber alloc] initWithBool:flagOn] forKey:@"buttonOn"];
     }
 }
 @end

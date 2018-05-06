@@ -295,7 +295,7 @@
     
     
     //  Создаем кнопку
-    UIBarButtonItem * button = [[UIBarButtonItem alloc] init];
+    UIBarButtonItem * button; // = [[UIBarButtonItem alloc] init];
     
     
     //  В зависимости от типа кнопки настраиваем ее
@@ -465,13 +465,10 @@
     vc.view.backgroundColor = [UIColor purpleColor];
     UILabel * label = [[UILabel alloc] initWithFrame:vc.view.frame];
     
-    
-    UIBarButtonItem * button = [[UIBarButtonItem alloc] init];
     NSString * text = @"Text";
     
-    
     if ([sender isKindOfClass:[UIBarButtonItem class]]) {
-        button = (UIBarButtonItem *)sender;
+        UIBarButtonItem * button = (UIBarButtonItem *)sender;
         
         if (button.tag == VKToolbarButtonTypeClip) {
             text = @"Прикрепить";
@@ -488,9 +485,7 @@
         NSLog(@"");
     }
     
-    
-    
-    
+        
     label.text = text;
     label.adjustsFontSizeToFitWidth = YES;
     label.textColor = [UIColor lightGrayColor];
